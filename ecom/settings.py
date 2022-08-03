@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     "tailwind",
     'django_browser_reload',
     #own
-    "theme"
+    "theme",
+    "shop"
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,7 @@ ROOT_URLCONF = "ecom.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
