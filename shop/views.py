@@ -1,6 +1,7 @@
 from django.shortcuts import render
 # from django.urls import reverse
 from django.views.generic.edit import CreateView
+from django.views.generic import ListView
 
 from shop.models import Category, Product
 
@@ -26,4 +27,8 @@ class ProductCreate(CreateView):
     fields = ['category', 'name', 'price', 'inventory', 'image']
     template_name: str = 'product_form.html'
     success_url = '/shop/product/add'
-    
+
+class ProductListView(ListView):
+    model = Product
+    template_name: str = 'shop.html'
+    context_object_name: str = 'products'

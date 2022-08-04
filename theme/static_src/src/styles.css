@@ -5,10 +5,14 @@
 
 .field input, .field select {
     border-radius: 10px;
-    width: auto;
+    width: 250px;
     color: black;
 }
 
+
+.product-form .field:last-child input {
+ width: auto;
+}
 .errorlist {
     color: red;
 }

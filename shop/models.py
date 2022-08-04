@@ -15,3 +15,6 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     inventory = models.IntegerField()
     image = models.ImageField()
+
+    def __str__(self) -> str:
+        return self.name
