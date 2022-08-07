@@ -1,26 +1,72 @@
 {% extends 'base.html' %}
-{% load static %}
+
 
 {% block content %}
-<div class="w-full h-screen overflow-y-hidden">
-    <div class="slide-show w-full">
-        <div id="carouselExampleSlidesOnly" class="carousel slide h-full" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{% static 'backgrounds/purple-space.jpg' %}" class="d-block w-100 h-full" alt="...">
+<div class="w-full text-white">
+    {% include 'slide_show.html' %}
+    <nav class="nav absolute top-10 flex flex-row px-11 md:px-44 xl:px-64 items-center justify-between w-full text-xl">
+        <div class="transition duration-200 ease-in">
+            <h1>Art Lounge</h1>
+        </div>
+        
+        <div class="nav-items">
+            <ul class="flex justify-between items-center">
+               <a href="/shop" class="mr-10">Home</a>
+                <div class="dropdown flex flex-col relative items-center justify-between top-7 mr-10">
+                    <a href="#">Products <i class="uil uil-angle-double-down"></i></a>
+                    <div class="dropdown-items flex flex-col">
+                        <a href="#">Paintings</a>
+                        <a href="#">T-Shirts</a>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="{% static 'backgrounds/earthfromspace.jpg' %}" class="d-block w-100 h-full" alt="...">
+                <a href="#" class="search mr-10"><i class="uil uil-search"></i></a>
+            </ul>
+        </div>
+        <div class="nav-icon absolute top-5 right-8">
+            <i class="uil uil-bars" id="nav-icon"></i>
+            <a href="#" class="mr-10"><i class="uil uil-search"></i></a>
+        </div>
+        
+        
+    </nav>
+    <div class="grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap products mx-10 sm:mx-40 items-center">
+        <div class="m-5">
+            <div class="categories">
+                <ul>
+                    <li class="leading-2" ><a href="/shop/category/T-Shirt">All</a></li>
+                    <li><a href="/shop/category/T-Shirt">T-Shirts</a></li>
+                    <li><a href="/shop/category/Painting">Paintings</a></li>
+                </ul>
+            </div>
+        </div>
+        {% for product in object_list %}
+        
+        <div class="m-3 p-2 xl:w-60 bg-slate-900 rounded-lg h-fit">
+        
+            <img src="{{product.image_url}}" alt="{{product.name}}-image" class="w-full rounded-md">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2>{{product.name}}</h2>
+                    <p>ksh {{product.price}}</p>
+                    <p>{{product.inventory}} left</p>
                 </div>
-                <div class="carousel-item">
-                    <img src="{% static 'backgrounds/milky-way.jpg' %}" class="d-block w-100 h-full" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'backgrounds/space-junk.jpg' %}" class="d-block w-100 h-full" alt="...">
+                <div class="cursor-pointer">
+                    <i class="uil uil-plus"></i>
+                    <i class="uil uil-shopping-cart"></i>
                 </div>
             </div>
         </div>
+        
+        {% endfor %}
+        
     </div>
-
 </div>
+<script defer>
+    const navIcon = document.getElementById('nav-icon')
+    const navItems = document.querySelector('.nav-items')
+
+    navIcon.addEventListener('click', () => {
+        navItems.classList.toggle('toggle')
+    })
+</script>
 {% endblock %}
