@@ -788,6 +788,14 @@ select {
   display: flex;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-full {
+  height: 100%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -810,6 +818,10 @@ select {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 
 .rounded-lg {
@@ -863,6 +875,12 @@ select {
   color: red;
 }
 
+@media screen and (min-width: 1300px) {
+  .slide-show {
+    transform: translateY(-400px);
+  }
+}
+
 @media (min-width: 768px) {
   .md\:w-1\/5 {
     width: 20%;
@@ -872,4 +890,3 @@ select {
     flex-direction: row;
   }
 }
-

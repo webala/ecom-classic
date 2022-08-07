@@ -13,7 +13,16 @@
 .product-form .field:last-child input {
  width: auto;
 }
+
 .errorlist {
     color: red;
 }
 
+
+
+
+@media screen and (min-width: 1300px) {
+    .slide-show {
+        transform: translateY(-400px);
+    }
+}
