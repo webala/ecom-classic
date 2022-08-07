@@ -15,6 +15,14 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     inventory = models.IntegerField()
     image = models.ImageField()
+    # is_limited = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.name
+
+    @property
+    def image_url(self):
+        return self.image.url
+
+# class Rating(models.Model):
+#     pass

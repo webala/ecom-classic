@@ -737,9 +737,28 @@ select {
   position: static;
 }
 
-.my-52 {
-  margin-top: 13rem;
-  margin-bottom: 13rem;
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.m-5 {
+  margin: 1.25rem;
 }
 
 .my-2 {
@@ -757,6 +776,10 @@ select {
   margin-bottom: 2.5rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .block {
   display: block;
 }
@@ -769,16 +792,32 @@ select {
   width: 100%;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
   align-items: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
 }
 
 .bg-gray-800 {
@@ -810,11 +849,6 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-orange-200 {
-  --tw-text-opacity: 1;
-  color: rgb(254 215 170 / var(--tw-text-opacity));
-}
-
 .field input, .field select {
   border-radius: 10px;
   width: 250px;
@@ -827,5 +861,15 @@ select {
 
 .errorlist {
   color: red;
+}
+
+@media (min-width: 768px) {
+  .md\:w-1\/5 {
+    width: 20%;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
 }
 

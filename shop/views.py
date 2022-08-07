@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from unicodedata import category
+from django.shortcuts import render, get_object_or_404
 # from django.urls import reverse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
@@ -31,4 +32,12 @@ class ProductCreate(CreateView):
 class ProductListView(ListView):
     model = Product
     template_name: str = 'shop.html'
-    context_object_name: str = 'products'
+    # context_object_name: str = 'products'
+
+class CategoryListView(ListView):
+    template_name: str = 'product_per_category.html'
+    
+    def get_queryset(self):
+
+        self.category = get_object_or_404(Category, name=self.kwargs['category_name'])
+        return Product.objects.filter(category=self.category)

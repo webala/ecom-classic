@@ -1,0 +1,19 @@
+{% for product in object_list %}
+
+<div class="painting m-5 p-2 md:w-1/5 bg-slate-900 rounded-lg">
+
+    <img src="{{product.image_url}}" alt="{{product.name}}-image" class="w-full rounded-md">
+    <div class="flex justify-between items-center">
+        <div>
+            <h2>{{product.name}}</h2>
+            <p>ksh {{product.price}}</p>
+            <p>{{product.inventory}} left</p>
+        </div>
+        <div class="cursor-pointer">
+            <i class="uil uil-plus"></i>
+            <i class="uil uil-shopping-cart"></i>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
