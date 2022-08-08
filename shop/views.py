@@ -12,26 +12,24 @@ from shop.models import Category, Product
 
 def dashboard(request):
 
-    #get latest product entry in database
-    latest_product = Product.objects.order_by('-id')[0]
-    print('latest_product', latest_product)
-    context = {
-        'latest_product': latest_product
-    }
+    # get latest product entry in database
+    latest_product = Product.objects.order_by("-id")[0]
+    print("latest_product", latest_product)
+    context = {"latest_product": latest_product}
 
     return render(request, "dashboard.html", context)
 
+
 def shop(request):
-    #get latest product entry in database
-    latest_product = Product.objects.order_by('-id')[0]
-    print('latest_product', latest_product)
-    context = {
-        'latest_product': latest_product
-    }
+    # get latest product entry in database
+    latest_product = Product.objects.order_by("-id")[0]
+    best_sellers = Product.objects.order_by("-id")[1:6]
+
+    context = {"latest_product": latest_product, "best_sellers": best_sellers}
 
     return render(request, "shop.html", context)
 
-    
+
 class CategoryCreate(CreateView):
     model = Category
     fields = ["name"]

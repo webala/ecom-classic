@@ -18,7 +18,9 @@
                     <div>
                         <h1 class="text-2xl">{{latest_product.name}}</h1>
                         <p class="text-xl">ksh {{latest_product.price}}</p>
+                        <hr/>
                     </div>
+                    
                     <div class="m-2">
                         <button class="border-2 flex group py-2 px-4 w-56">
                             <p> Add to cart</p>
@@ -29,6 +31,31 @@
             </div>
             </div>
             {% endif %}
+
+            {% if best_sellers %}
+
+            <div class="flex flex-col items-center mt-40">
+                <h1 class="text-2xl p-10 underline">Best sellers</h1>
+
+                <div class="best-sellers grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap mx-10 sm:mx-20 md:mx-40 items-center">
+                    {% for product in best_sellers %}
+        
+                    {% include 'product.html' %}
+                    
+                    {% endfor %}
+                </div>
+                <div class="mt-10">
+                    <button class="border-2 flex group py-2 px-4 w-56 bg-black text-white">
+                        <p> View All</p>
+                        <i class="uil uil-arrow-right group-hover:translate-x-14 group-hover:visible transform duration-300 ease-in-out ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+
+            <div>
+                
+            </div>
     </div>
     
 </div>
