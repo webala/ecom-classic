@@ -2,34 +2,10 @@
 
 
 {% block content %}
-<div class="w-full text-white">
+<div class="w-full text-black relative">
     {% include 'slide_show.html' %}
-    <nav class="nav absolute top-10 flex flex-row px-11 md:px-24 xl:px-64  justify-between w-full text-xl">
-        <div class="transition duration-200 ease-in">
-            <h1>Art Lounge</h1>
-        </div>
-        
-        <div class="nav-items">
-            <ul class="flex justify-between">
-               <a href="/shop" class="mr-10">Home</a>
-               <a href="#" class="mr-10">About</a>
-                <div class="dropdown flex flex-col relative justify-between  mr-10">
-                    <a href="#">Products <i class="uil uil-angle-double-down"></i></a>
-                    <div class="dropdown-items flex flex-col">
-                        <a href="/shop/category/Painting">Paintings</a>
-                        <a href="/shop/category/T-Shirt">T-Shirts</a>
-                    </div>
-                </div>
-                <a href="#" class="search mr-10"><i class="uil uil-search"></i></a>
-            </ul>
-        </div>
-        <div class="nav-icon absolute right-8 ">
-            <i class="uil uil-bars" id="nav-icon"></i>
-            <a href="#" class="mr-10"><i class="uil uil-search"></i></a>
-        </div>
-        
-        
-    </nav>
+    {% include 'nav.html' %}
+
     <div class="grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap products mx-10 sm:mx-20 md:mx-40 items-center">
         <div class="m-5">
             <div class="categories">
@@ -42,7 +18,7 @@
         </div>
         {% for product in object_list %}
         
-        <div class="m-3 p-2 xl:w-60 bg-slate-900 rounded-lg h-fit">
+        <div class="hover:scale-125 transition duration-300 ease-in m-3 p-2 xl:w-60 bg-slate-900 rounded-lg h-fit text-white">
         
             <img src="{{product.image_url}}" alt="{{product.name}}-image" class="w-full rounded-md">
             <div class="flex justify-between items-center">

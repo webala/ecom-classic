@@ -25,4 +25,5 @@ class Product(models.Model):
         return self.image.url
 
 # class Rating(models.Model):
-#     pass
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+#     rating = models.IntegerChoices()
