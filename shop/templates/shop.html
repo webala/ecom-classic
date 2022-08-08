@@ -7,6 +7,9 @@
 
     <div class="products p-5 md:p-20 flex flex-col items-center">
         {% if latest_product %}
+            <div class="flex flex-col items-start">
+
+            <h1 class="text-2xl p-10 underline">New release</h1>
             <div class="latest sm:flex">
                 <div class="md:w-96">
                     <img src="{{latest_product.image_url}}" alt="latest_product" />
@@ -23,6 +26,7 @@
                         </button>
                     </div>
                 </div>
+            </div>
             </div>
             {% endif %}
     </div>
