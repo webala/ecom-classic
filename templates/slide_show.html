@@ -1,19 +1,23 @@
 {% load static %}
-<div class="slide-show w-full">
-    <div id="carouselExampleSlidesOnly" class="carousel slide h-full" data-bs-ride="carousel">
+<div class="slide-show w-full flex flex-col items-center">
+    <div id="carouselExampleSlidesOnly" class="carousel slide w-full" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <!-- <div class="carousel-item active">
                 <img src="{% static 'backgrounds/purple-space.jpg' %}" class="d-block w-100 h-full" alt="...">
-            </div>
-            <div class="carousel-item">
+            </div> -->
+            <div class="carousel-item active">
                 <img src="{% static 'backgrounds/earthfromspace.jpg' %}" class="d-block w-100 h-full" alt="...">
             </div>
-            <div class="carousel-item">
+            <!-- <div class="carousel-item">
                 <img src="{% static 'backgrounds/milky-way.jpg' %}" class="d-block w-100 h-full" alt="...">
-            </div>
+            </div> -->
             <div class="carousel-item">
                 <img src="{% static 'backgrounds/space-junk.jpg' %}" class="d-block w-100 h-full" alt="...">
             </div>
         </div>
+    </div >
+    <div class="quote relative bottom-28 sm:bottom-32 px-5 flex flex-col items-center">
+        <p>"Give every day the chance to become the most beautiful day of your life."</p>
+        <p>-Mark Twain</p>
     </div>
 </div>

@@ -745,16 +745,12 @@ select {
   position: relative;
 }
 
+.bottom-28 {
+  bottom: 7rem;
+}
+
 .top-10 {
   top: 2.5rem;
-}
-
-.top-7 {
-  top: 1.75rem;
-}
-
-.top-5 {
-  top: 1.25rem;
 }
 
 .right-8 {
@@ -881,6 +877,11 @@ select {
   padding: 0.5rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .px-11 {
   padding-left: 2.75rem;
   padding-right: 2.75rem;
@@ -915,6 +916,15 @@ select {
 
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.quote {
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+}
+
+.quote p:last-child {
+  font-size: 15px;
 }
 
 .field input, .field select {
@@ -993,6 +1003,14 @@ select {
   .nav-icon {
     visibility: hidden;
   }
+
+  .quote {
+    font-size:30px;
+  }
+
+  .quote p:last-child {
+    font-size: 20px;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -1018,13 +1036,27 @@ select {
 }
 
 @media (min-width: 640px) {
+  .sm\:bottom-32 {
+    bottom: 8rem;
+  }
+
   .sm\:mx-40 {
     margin-left: 10rem;
     margin-right: 10rem;
   }
+
+  .sm\:mx-20 {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
 }
 
 @media (min-width: 768px) {
+  .md\:mx-40 {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+
   .md\:w-1\/5 {
     width: 20%;
   }
@@ -1037,9 +1069,9 @@ select {
     flex-direction: row;
   }
 
-  .md\:px-44 {
-    padding-left: 11rem;
-    padding-right: 11rem;
+  .md\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 }
 

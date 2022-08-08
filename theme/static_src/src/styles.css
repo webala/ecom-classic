@@ -1,7 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
+
+.quote {
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+}
+
+.quote p:last-child {
+    font-size: 15px;
+}
 
 .field input, .field select {
     border-radius: 10px;
@@ -80,6 +90,13 @@
 
     .nav-icon {
         visibility: hidden;
+    }
+
+    .quote {
+        font-size:30px;
+    }
+    .quote p:last-child {
+        font-size: 20px;
     }
 }
 
