@@ -21,4 +21,13 @@
             <i class="uil uil-bars" id="nav-icon"></i>
             <a href="#" class="mr-10"><i class="uil uil-search"></i></a>
         </div>  
-    </nav>
+</nav>
+
+<script defer>
+    const navIcon = document.getElementById('nav-icon')
+    const navItems = document.querySelector('.nav-items')
+
+    navIcon.addEventListener('click', () => {
+        navItems.classList.toggle('toggle')
+    })
+</script>

@@ -46,7 +46,7 @@ class ProductCreate(CreateView):
 
 class ProductListView(ListView):
     model = Product
-    template_name: str = ""
+    template_name: str = "product_per_category.html"
     # context_object_name: str = 'products'
 
 
