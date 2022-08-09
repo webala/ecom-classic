@@ -1,11 +1,11 @@
-from unicodedata import category
 from django.shortcuts import render, get_object_or_404
 
 # from django.urls import reverse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
 
-from shop.models import Category, Product
+from shop.models import Category, Product, Order
+from shop.utils import get_cart_items
 
 # Create your views here.
 
@@ -63,3 +63,13 @@ class ProductDetail(DetailView):
     model = Product
     template_name: str = 'product_detail.html'
     context_object_name: str = 'product'
+
+def cart(request):
+    order, cart_items = get_cart_items(request)
+
+    context = {
+        'cart': order,
+        'cart_items': cart_items
+    }
+
+    return render(request, 'cart.html', context)

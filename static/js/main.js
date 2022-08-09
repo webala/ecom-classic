@@ -16,9 +16,9 @@ function getCookie(name) {
 }
 
 //define and initialize cart from cookies. Create cart cookie if it does not exist
-let cart = getCookie('cart')
+let cart = JSON.parse(getCookie('cart'))
 
-if (cart == null) {
+if (cart == undefined) {
     cart = {}
     document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/';
 }
@@ -27,12 +27,17 @@ console.log('cart: ', cart)
 
 //modify cart function
 const modifyCartCookie = (action, productId) => {
-    // Modifies the cart cookie and updates the value of document.cookie
+    // Modifies the cart cookie and updates the value of cart in document.cookie
+
+    
+    
+
     if (action === 'add') {
+        console.log('action: ', action)
         if (cart[productId] == undefined) {
             cart[productId] = {'quantity': 1}
         } else {
-            cart[productId]['quantity'] += 1
+            cart[productId]['quantity'] +=1
         }
     }
     else if (action === 'remove') {
@@ -48,5 +53,20 @@ const modifyCartCookie = (action, productId) => {
 
     console.log('modified cart: ', cart)
     document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/';
-    location.reload()
+    //location.reload()
 }
+
+//get update cart buttons
+const updateCartBtns = Array.from(document.getElementsByClassName('update-cart'))
+
+//add click event listener to modify cart on click
+updateCartBtns.forEach((btn) => {
+    
+    btn.addEventListener('click', () => {
+        
+        const productId = btn.dataset.productid
+        const action = btn.dataset.action
+        modifyCartCookie(action, productId)
+    })
+
+})
