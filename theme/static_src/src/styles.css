@@ -30,7 +30,7 @@
 
 .products {
     position: relative;
-    
+    bottom: 550px;
 }
 
 .dropdown-items {
@@ -85,6 +85,9 @@
     }
     .quote p:last-child {
         font-size: 20px;
+    }
+    .products {
+        bottom: 250px;
     }
 }
 

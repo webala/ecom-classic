@@ -53,7 +53,7 @@ const modifyCartCookie = (action, productId) => {
 
     console.log('modified cart: ', cart)
     document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/';
-    //location.reload()
+    location.reload()
 }
 
 //get update cart buttons
@@ -70,3 +70,8 @@ updateCartBtns.forEach((btn) => {
     })
 
 })
+
+
+//Button with .back class used for going back
+const backBtn = document.querySelector('.back')
+backBtn.addEventListener('click', () => history.back())

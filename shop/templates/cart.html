@@ -7,11 +7,11 @@
     </div>
 
     <div class="relative top-36 md:px-16 xl:px-56 w-full flex flex-col items-start">
+    {% if cart_items %}
         <div class="font-bold text-xl">
             <p>Items: {{cart.cart_items}}</p>
             <p>Cart Total: {{cart.cart_total}}</p>
         </div>
-    {% if cart_items %}
         {% for item in cart_items %}
         <div class="cart-item my-10 flex items-center justify-between p-3 w-full border border-black">
             <div class="item-img w-1/4 md:w-52">
@@ -31,6 +31,14 @@
             </div>
         </div>
         {% endfor %}
+    {% else %}
+    <div>
+        <div class="back flex justify-start items-center cursor-pointer group my-10">
+            <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+            <p class="ml-2">Continue shopping</p>
+        </div>
+        <p class="text-2xl">&#128546; No items in your cart</p>
+    </div>
     {% endif %}
     </div>
 </div>

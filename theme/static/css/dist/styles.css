@@ -757,12 +757,8 @@ select {
   bottom: 7rem;
 }
 
-.top-20 {
-  top: 5rem;
-}
-
-.right-0 {
-  right: 0px;
+.top-36 {
+  top: 9rem;
 }
 
 .bottom-5 {
@@ -775,18 +771,6 @@ select {
 
 .bottom-24 {
   bottom: 6rem;
-}
-
-.top-3 {
-  top: 0.75rem;
-}
-
-.top-32 {
-  top: 8rem;
-}
-
-.top-36 {
-  top: 9rem;
 }
 
 .m-3 {
@@ -829,12 +813,12 @@ select {
   margin-right: 2.5rem;
 }
 
-.mt-32 {
-  margin-top: 8rem;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.mt-32 {
+  margin-top: 8rem;
 }
 
 .mt-40 {
@@ -875,6 +859,14 @@ select {
   width: 100%;
 }
 
+.w-1\/4 {
+  width: 25%;
+}
+
+.w-1\/5 {
+  width: 20%;
+}
+
 .w-56 {
   width: 14rem;
 }
@@ -885,18 +877,6 @@ select {
 
 .w-1\/3 {
   width: 33.333333%;
-}
-
-.w-1\/4 {
-  width: 25%;
-}
-
-.w-1 {
-  width: 0.25rem;
-}
-
-.w-1\/5 {
-  width: 20%;
 }
 
 .transform {
@@ -940,6 +920,10 @@ select {
   align-items: flex-start;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
@@ -956,10 +940,6 @@ select {
   justify-content: space-between;
 }
 
-.justify-evenly {
-  justify-content: space-evenly;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -968,17 +948,12 @@ select {
   border-radius: 0px;
 }
 
-.border-2 {
-  border-width: 2px;
-}
-
 .border {
   border-width: 1px;
 }
 
-.border-x {
-  border-left-width: 1px;
-  border-right-width: 1px;
+.border-2 {
+  border-width: 2px;
 }
 
 .border-black {
@@ -1005,16 +980,16 @@ select {
   padding: 0.5rem;
 }
 
+.p-3 {
+  padding: 0.75rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
 
 .p-10 {
   padding: 2.5rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
 }
 
 .px-11 {
@@ -1124,6 +1099,7 @@ select {
 
 .products {
   position: relative;
+  bottom: 550px;
 }
 
 .dropdown-items {
@@ -1182,6 +1158,10 @@ select {
 
   .quote p:last-child {
     font-size: 20px;
+  }
+
+  .products {
+    bottom: 250px;
   }
 }
 
@@ -1295,25 +1275,6 @@ select {
   .sm\:flex {
     display: flex;
   }
-
-  .sm\:p-10 {
-    padding: 2.5rem;
-  }
-
-  .sm\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
-  .sm\:px-1 {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-  }
-
-  .sm\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
 }
 
 @media (min-width: 768px) {
@@ -1326,6 +1287,10 @@ select {
     margin-top: 15rem;
   }
 
+  .md\:w-52 {
+    width: 13rem;
+  }
+
   .md\:w-96 {
     width: 24rem;
   }
@@ -1334,24 +1299,12 @@ select {
     width: 16rem;
   }
 
-  .md\:w-5 {
-    width: 1.25rem;
-  }
-
-  .md\:w-52 {
-    width: 13rem;
-  }
-
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:p-20 {
     padding: 5rem;
-  }
-
-  .md\:p-10 {
-    padding: 2.5rem;
   }
 
   .md\:px-24 {
@@ -1385,11 +1338,6 @@ select {
   .xl\:px-64 {
     padding-left: 16rem;
     padding-right: 16rem;
-  }
-
-  .xl\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
   }
 
   .xl\:px-56 {
