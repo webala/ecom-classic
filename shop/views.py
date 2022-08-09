@@ -65,8 +65,10 @@ class ProductDetail(DetailView):
     context_object_name: str = 'product'
 
 def cart(request):
-    order, cart_items = get_cart_items(request)
-
+    data = get_cart_items(request)
+    order = data['order']
+    cart_items = data['cart_items']
+    
     context = {
         'cart': order,
         'cart_items': cart_items

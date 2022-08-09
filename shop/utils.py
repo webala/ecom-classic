@@ -5,7 +5,7 @@ from .models import Product
 #Get cart cookie and return order and order items object
 def get_cart_items(request):
     try:
-        cart_cookie_data = json.loads(request.COOKIE['cart'])
+        cart_cookie_data = json.loads(request.COOKIES['cart'])
     except:
         cart_cookie_data = {}
 
@@ -22,6 +22,7 @@ def get_cart_items(request):
         cart_item = {
             'product': {
                 'id': product.id,
+                'name': product.name,
                 'price': product.price,
                 'category': product.category.name,
                 'image_url': product.image_url

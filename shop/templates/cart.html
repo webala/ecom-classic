@@ -1,19 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="cart">
-    {% for item in cart_items %}
-
-    <div class="cart-item">
-        <div class="item-img">
-            <img src="{{item.image_url}}" alt="{{item.product.name}} image">
-        </div>
-        <div>
-            <h1>{{item.product.name}}</h1>
-        </div>
+<div class="cart p-2 w-full">
+    <div class="text-black">
+        {% include 'nav.html' %}
     </div>
 
-    {% endfor %}
+    <div class="relative top-36 md:px-16 xl:px-56 w-full flex flex-col items-start">
+        <div class="font-bold text-xl">
+            <p>Items: {{cart.cart_items}}</p>
+            <p>Cart Total: {{cart.cart_total}}</p>
+        </div>
+    {% if cart_items %}
+        {% for item in cart_items %}
+        <div class="cart-item my-10 flex items-center justify-between p-3 w-full border border-black">
+            <div class="item-img w-1/4 md:w-52">
+                <img src="{{item.product.image_url}}" alt="{{item.product.name}} image">
+            </div>
+            <div>
+                <h1 class="font-medium text-xl">{{item.product.name}}</h1>
+                <p>ksh {{item.product.price}}</p>
+            </div>
+            <div class="flex items-center justify-between border w-1/5 p-2 border-black">
+                <i class="uil uil-minus update-cart cursor-pointer" data-productId={{item.product.id}} data-action="remove"></i>
+                <p class="">{{item.quantity}}</p>
+                <i class="uil uil-plus update-cart cursor-pointer" data-productId={{item.product.id}} data-action="add"></i>
+            </div>
+            <div>
+                <i class="uil uil-trash-alt update-cart text-2xl text-red-800 hover:animate-bounce cursor-pointer" data-productId={{item.product.id}} data-action="delete"></i>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
 </div>
 
 {% endblock %}
