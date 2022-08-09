@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 
 # from django.urls import reverse
 from django.views.generic.edit import CreateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from shop.models import Category, Product
 
@@ -57,3 +57,9 @@ class CategoryListView(ListView):
 
         self.category = get_object_or_404(Category, name=self.kwargs["category_name"])
         return Product.objects.filter(category=self.category)
+
+
+class ProductDetail(DetailView):
+    model = Product
+    template_name: str = 'product_detail.html'
+    context_object_name: str = 'product'

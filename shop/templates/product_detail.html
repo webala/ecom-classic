@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="p-5 md:p-20 flex flex-col items-center mt-32 md:mt-60">
+<div class="flex flex-col items-start">
+    <div class="back flex justify-start items-center cursor-pointer group my-10">
+        <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+        <p class="ml-2">Continue shopping</p>
+    </div>
+    <div class="latest sm:flex">
+        <div class="md:w-96">
+            <img src="{{product.image_url}}" alt="product" />
+        </div>
+        <div  class="m-4 sm:m-8 flex flex-col justify-between">
+            <div>
+                <h1 class="text-2xl">{{product.name}}</h1>
+                <p class="text-xl">ksh {{product.price}}</p>
+                <hr/>
+            </div>
+            
+            <div class="m-2">
+                <button class="border-2 flex group py-2 px-4 w-56" data-id="{{product.id}}" data-action="add">
+                    <p> Add to cart</p>
+                    <i class="uil uil-arrow-right group-hover:translate-x-14 group-hover:visible transform duration-300 ease-in-out ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    const backBtn = document.querySelector('.back')
+    backBtn.addEventListener('click', () => history.back())
+</script>
+{% endblock %}
