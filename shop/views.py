@@ -100,7 +100,9 @@ def checkout(request):
 
     context = {
         'cart': order,
-        'cart_items': cart_items
+        'cart_items': cart_items,
+        'customer_form': customer_form,
+        'shipping_form': shipping_form
     }
 
-    return render(request, )
+    return render(request, 'checkout.html', context)

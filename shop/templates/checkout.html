@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="">
+    <div class="p-10 flex">
+        <p>Cart</p>
+        <i class="uil uil-angle-right"></i>
+        <p class="font-semibold">Checkout</p>
+        <i class="uil uil-angle-right"></i>
+        <p>Payment</p>
+    </div>
+
+
+<div class="checkout xl:flex justify-center">
+    {% if cart_items %}
+    <div class="checkout-forms">
+        <form action="#"  enctype="multipart/form-data" method="POST" class="flex flex-col items-center">
+            {% csrf_token %}
+            <div class="md:flex md:w-full justify-center xl:w-1/2">
+                <div class="m-5">
+                    <h1>Contact info</h1>
+                    {% for field in customer_form %}
+                    <div class="field flex flex-col text-black text-xl my-2">
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field }}
+                        {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+                
+                <div class="m-5">
+                <h1>Shipping Address</h1>
+                {% for field in shipping_form %}
+                    <div class="field flex flex-col text-black text-xl my-2">
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field }}
+                        {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="flex justify-evenly items-center w-full p-2 sm:px-10">
+                <div class="back flex justify-start items-center cursor-pointer group my-10">
+                    <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+                    <p class="ml-2">Back to cart</p>
+                </div>
+                <button class="bg-slate-900 text-white p-2 rounded-lg" type="submit">Proceed to payment</button>
+            </div>
+        </form>
+    </div>
+    <div class="cart-summary xl:w-1/2 sm:w-2/3 p-5">
+        <h1 class="mb-5">Cart summary</h1>
+        <div class="flex justify-center">
+            {% for item in cart_items %}
+            <div class="cart-item flex items-center justify-evenly p-3 w-full border border-black">
+                <div class="item-img w-1/5 md:w-28">
+                    <img src="{{item.product.image_url}}" alt="{{item.product.name}} image">
+                </div>
+                <div>
+                    <h1 class="font-medium text-xl">{{item.product.name}}</h1>
+                    <p>ksh {{item.product.price}}</p>
+                </div>
+                <div class="flex items-center justify-center border w-1/5 p-2 border-black">
+                    <p class="">{{item.quantity}}</p>  
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

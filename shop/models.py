@@ -37,6 +37,10 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     email = models.EmailField()
+    phone = models.CharField(max_length=12)
+
+    def __str__(self) -> str:
+        return self.first_name + ' ' + self.last_name
 
 
 #Delivery Address for products
@@ -45,6 +49,9 @@ class ShippingAddress(models.Model):
     location = models.CharField(max_length=20)
     estate = models.CharField(max_length=20)
     house_no = models.CharField(max_length=20)
+
+    def __str__(self) -> str:
+        return self.location + ' ' + self.estate
 
 #This model will translate to cart in the client side
 class Order(models.Model):
