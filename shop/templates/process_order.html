@@ -5,9 +5,9 @@
 <div class="process-order flex flex-col items-center">
     <div class="p-5 md:p-40">
         <p class="my-10">Confirm that the number below is your m-pesa number.</p>
-        <form action="#">
+        <form action="#" method="post">{% csrf_token %}
             <div class="field">
-                <input type="text" value="{{phone}}">
+                <input type="text" value="{{phone}}" name="phone" id="phone">
             </div>
             
             <button class="bg-slate-900 my-4 text-white p-2 rounded-lg" type="submit">Proceed</button>

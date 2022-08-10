@@ -122,13 +122,15 @@ def process_order(request, address_id):
         amount = order['cart_total']
         phone = request.POST['phone']
         if phone == customer_phone:
-            initiate_stk_push(customer_phone, amount)
+            response_data = initiate_stk_push(customer_phone, amount)
+            print(response_data)
         else:
             customer = shipping_address.customer
             customer.phone = phone
             customer.save()
-            initiate_stk_push(phone, amount)
-
+            response_data = initiate_stk_push(phone, amount)
+            print(response_data)
+            
     context = {
         'phone': customer_phone
     }

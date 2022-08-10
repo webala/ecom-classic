@@ -1,9 +1,12 @@
 import json
 import os
+from urllib import response
 from .models import Product
 import requests
 from requests.auth import HTTPBasicAuth
 from django.conf import settings
+from datetime import datetime
+import base64
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -51,6 +54,61 @@ def get_access_token():
     access_token = json_res['access_token']
     return access_token
 
+#function to format date time
+def format_date_time():
+    current_time = datetime.now()
+    formated_time = current_time.strftime('%Y%m%d%H%M%S')
+    return formated_time
 
+
+#function to generate password string
+def generate_password(dates):
+    data_to_encode = str(settings.BUSINESS_SHORT_CODE) + settings.LIPANAMPESA_PASSKEY + dates
+    encoded_string = base64.b64encode(data_to_encode.encode())
+    decoded_passkey = encoded_string.decode('utf-8')
+
+    return decoded_passkey
+
+#function to initiate stk push for mpesa payment
 def initiate_stk_push(phone, amount):
-    pass
+    access_token = get_access_token()
+    formated_time = format_date_time()
+    password = generate_password(formated_time)
+
+    headers = {
+        'Authorization': 'Bearer %s' % access_token
+    }
+
+    payload = {    
+            "BusinessShortCode": settings.BUSINESS_SHORT_CODE,    
+            "Password": password,    
+            "Timestamp": formated_time,    
+            "TransactionType": "CustomerPayBillOnline",    
+            "Amount": 1,    
+            "PartyA":phone,    
+            "PartyB":"174379",    
+            "PhoneNumber":phone,    
+            "CallBackURL":"https://posthere.io/08b5-411f-8389",    
+            "AccountReference":"ECOM CLASSIC",    
+            "TransactionDesc":"Make Payment"
+        }
+
+    response = requests.post(
+        settings.API_RESOURCE_URL, headers=headers, json=payload
+    )
+
+    string_response = response.text
+    string_object = json.loads(string_response)
+
+    if 'errorCode' in string_object:
+        print('Error: ', string_object)
+        return string_object
+    else:
+        data = {
+                'merchant_request_id' :string_object['MerchantRequestID'],
+                'chechout_request_id' :string_object['CheckoutRequestID'],
+                'response_code' :string_object['ResponseCode'],
+                'response_description' :string_object['ResponseDescription'],
+                'customer_meaasge' :string_object['CustomerMessage'],
+            }
+    return data

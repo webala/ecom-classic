@@ -33,7 +33,13 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+#Safaricom daraja API variables
 DARAJA_AUTH_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+BUSINESS_SHORT_CODE = 174379
+LIPANAMPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+
+
 # Application definition
 
 INSTALLED_APPS = [
