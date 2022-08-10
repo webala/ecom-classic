@@ -1,14 +1,14 @@
-from dataclasses import field
+
 from django import forms
-from .models import Category, Product
+from .models import Customer, ShippingAddress
 
-class ProductForm (forms.ModelForm):
+class CustomerForm(forms.ModelForm):
     class Meta:
-        model = Product
-        fields = ['name', 'price', 'category', 'inventory', 'image']
+        model = Customer
+        fields = ['first_name', 'last_name', 'email']
 
 
-class CategoryForm(forms.ModelForm):
+class ShippingAddressForm(forms.ModelForm):
     class Meta:
-        model = Category
-        field = ['name']
+        model = ShippingAddress
+        fields = ['location', 'estate', 'house_no']
