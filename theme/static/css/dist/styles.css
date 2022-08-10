@@ -1481,6 +1481,18 @@ select {
     flex-wrap: wrap;
   }
 
+  .xl\:border {
+    border-width: 1px;
+  }
+
+  .xl\:border-l {
+    border-left-width: 1px;
+  }
+
+  .xl\:border-none {
+    border-style: none;
+  }
+
   .xl\:px-64 {
     padding-left: 16rem;
     padding-right: 16rem;

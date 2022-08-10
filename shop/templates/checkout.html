@@ -52,11 +52,11 @@
             </div>
         </form>
     </div>
-    <div class="cart-summary xl:w-1/2 sm:w-2/3 p-5">
+    <div class="cart-summary xl:w-1/2 sm:w-2/3 p-5 xl:border-l">
         <h1 class="mb-5">Cart summary</h1>
         <div class="flex justify-center">
             {% for item in cart_items %}
-            <div class="cart-item flex items-center justify-evenly p-3 w-full border border-black">
+            <div class="cart-item flex items-center justify-evenly p-3 w-full border border-black xl:border-none">
                 <div class="item-img w-1/5 md:w-28">
                     <img src="{{item.product.image_url}}" alt="{{item.product.name}} image">
                 </div>

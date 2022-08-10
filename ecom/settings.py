@@ -33,7 +33,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-
+DARAJA_AUTH_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 # Application definition
 
 INSTALLED_APPS = [
