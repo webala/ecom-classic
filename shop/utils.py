@@ -34,3 +34,7 @@ def get_cart_items(request):
         order_items.append(cart_item)
     
     return {'order': order, 'cart_items': order_items}
+
+
+def initiate_stk_push(phone, amount):
+    pass

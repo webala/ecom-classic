@@ -4,8 +4,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
 from .forms import ShippingAddressForm, CustomerForm
-from shop.models import Category, Product
-from shop.utils import get_cart_items
+from shop.models import Category, Product, ShippingAddress
+from shop.utils import get_cart_items, initiate_stk_push
 
 # Create your views here.
 
@@ -106,3 +106,33 @@ def checkout(request):
     }
 
     return render(request, 'checkout.html', context)
+
+
+def process_order(request, address_id):
+    shipping_address = ShippingAddress.objects.get(id=address_id)
+    customer_phone = shipping_address.customer.phone
+    data = get_cart_items(request)
+    order = data['order']
+    # cart_items = data['cart_items']
+
+    # product_id = order.product.id
+    # product = Product.objects.get(id=product_id)
+
+    if request.method == 'POST':
+        amount = order['cart_total']
+        phone = request.POST['phone']
+        if phone == customer_phone:
+            initiate_stk_push(customer_phone, amount)
+        else:
+            customer = shipping_address.customer
+            customer.phone = phone
+            customer.save()
+            initiate_stk_push(phone, amount)
+
+    context = {
+        'phone': customer_phone
+    }
+
+    return render(request, 'process_order.html', context)
+
+    
