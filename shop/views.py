@@ -1,10 +1,12 @@
+from itertools import product
+import json
 from django.shortcuts import render, get_object_or_404, redirect
-
-# from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
 from .forms import ShippingAddressForm, CustomerForm
-from shop.models import Category, Product, ShippingAddress
+from shop.models import CartItem, Category, Order, Product, ShippingAddress, TransactionDetails
 from shop.utils import get_cart_items, initiate_stk_push
 
 # Create your views here.
@@ -112,29 +114,95 @@ def process_order(request, address_id):
     shipping_address = ShippingAddress.objects.get(id=address_id)
     customer_phone = shipping_address.customer.phone
     data = get_cart_items(request)
-    order = data['order']
-    # cart_items = data['cart_items']
+    cookie_cart_items = data['cart_items']
 
-    # product_id = order.product.id
-    # product = Product.objects.get(id=product_id)
+    #populate database with order and cart items from the cookies
+    order = Order.objects.create(shipping_address=shipping_address)
+    for item in cookie_cart_items:
+        product_id = item['product']['id']
+        product = Product.objects.get(id=product_id)
+        cart_item = CartItem.objects.create(
+            product=product,
+            quantity=item['quantity']
+        )
+        cart_item.cart = order
+        cart_item.save()
+    
 
     if request.method == 'POST':
-        amount = order['cart_total']
+        amount = order.cart_total
         phone = request.POST['phone']
         if phone == customer_phone:
             response_data = initiate_stk_push(customer_phone, amount)
             print(response_data)
+            TransactionDetails.objects.create(
+                request_id = response_data['chechout_request_id'],
+                order = order
+            )
+            return redirect('confirm_payment')
         else:
             customer = shipping_address.customer
             customer.phone = phone
             customer.save()
             response_data = initiate_stk_push(phone, amount)
             print(response_data)
-            
+            TransactionDetails.objects.create(
+                request_id = response_data['chechout_request_id'],
+                order = order
+            )
+            return redirect('confirm_payment')
     context = {
         'phone': customer_phone
     }
 
     return render(request, 'process_order.html', context)
+
+
+@csrf_exempt
+def confirm_payment(request, transaction_id=None):
+    if transaction_id:
+        transaction = TransactionDetails.objects.get(id=transaction_id)
+    if request.method == 'POST':
+        request_data = json.loads(request.body)
+        body = request_data.get('Body')
+        result_code = body.get('stkCallback').get('ResultCode')
+
+        if result_code == 0:
+            print('Payment successful')
+            request_id = body.get('stkCallback').get('CheckoutRequestID')
+            metadata =  body.get('stkCallback').get('CallbackMetadata').get('Item')
+
+            for data in metadata:
+                if data.get('Name') == 'MpesaReceiptNumber':
+                    receipt_number = data.get('Value')
+                elif data.get('Name') == 'Amount':
+                    amount = data.get('Value')
+                elif data.get('Name') == 'PhoneNumber':
+                    phone_number = data.get('Value')
+            print('receipt:', receipt_number)
+            print('amouont: ', amount)
+            print('request_id: ', request_id)
+            transaction = TransactionDetails.objects.get(request_id=request_id)
+            transaction.receipt_number = receipt_number
+            transaction.amount = amount
+            transaction.phone_number = str(phone_number)
+            transaction.is_finished = True
+            transaction.is_succesful = True
+            transaction.save()
+
+            # context = {
+            #     'transaction': transaction
+            # }
+            return redirect(confirm_payment, transaction_id=transaction.id)
+
+    context = {
+        'transaction': transaction
+    }
+    return render(request, 'confirm_payment.html')
+
+class TransactionDetailView(DetailView):
+    model = TransactionDetails
+    template_name: str = 'transaction.html'
+    context_object_name: str = 'transaction'
 
     

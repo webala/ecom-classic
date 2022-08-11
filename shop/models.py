@@ -75,7 +75,7 @@ class Order(models.Model):
 #individual items in an order(cart)
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    cart = models.ForeignKey(Order, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     quantity = models.IntegerField()
 
 
@@ -85,9 +85,14 @@ class CartItem(models.Model):
 
 #Transaction details for paymetents made
 class TransactionDetails(models.Model):
+    request_id = models.CharField(max_length=100)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
-    transaction_code = models.CharField(max_length=20)
+    receipt_number = models.CharField(max_length=20, null=True, blank=True)
+    amount = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    phone_number = models.CharField(max_length=100, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    is_finished = models.BooleanField(default=False)
+    is_succesful = models.BooleanField(default=False)
     
 
 
