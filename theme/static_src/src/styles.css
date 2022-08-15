@@ -60,6 +60,7 @@
 
 .nav-items.toggle {
     visibility: visible;
+    color: white;
 }
 
 .nav-items.toggle ul {

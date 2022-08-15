@@ -5,9 +5,6 @@
 <div class="shop w-full text-white">
     {% include 'slide_show.html' %}
     {% include 'nav.html' %}
-
-    
-
     <div class="products p-5 md:p-20 flex flex-col items-center text-black">
         {% if latest_product %}
             <div class="flex flex-col items-start">
@@ -40,7 +37,7 @@
             <div class="flex flex-col items-center mt-40">
                 <h1 class="text-2xl p-10 underline">Best sellers</h1>
 
-                <div class="best-sellers grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap mx-10 sm:mx-20 md:mx-40 items-center">
+                <div class="best-sellers grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap px-10 sm:px-20 md:px-40 items-center">
                     {% for product in best_sellers %}
         
                     {% include 'product.html' %}
@@ -70,9 +67,10 @@
                     </div>
                 </a>
             </div>
-
-            
+           
     </div>
-    
+    <div class="relative mt-20">
+        {% include 'footer.html' %}
+    </div>
 </div>
 {% endblock %}
