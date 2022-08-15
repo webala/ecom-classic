@@ -196,6 +196,9 @@ def confirm_payment(request, request_id):
     }
     return render(request, 'confirm_payment.html', context)
 
+def about(request):
+    return render(request, 'about.html')
+
 class TransactionDetailView(DetailView):
     model = TransactionDetails
     template_name: str = "transaction.html"

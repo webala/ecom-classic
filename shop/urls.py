@@ -6,6 +6,7 @@ urlpatterns = [
     path('category/add', CategoryCreate.as_view(), name='category_create'),
     path('product/add', ProductCreate.as_view(), name='product_create'),
     path('products', ProductListView.as_view(), name='products'),
+    path('about', about, name='about'),
     path('product/<pk>', ProductDetail.as_view(), name='product_detail'),
     path('cart', cart, name='cart'),
     path('checkout', checkout, name='checkout'),

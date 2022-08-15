@@ -2,11 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Shadows+Into+Light&display=swap');
+* {
+    font-family: 'Libre Baskerville', serif;;
+}
 
+.logo h1{
+    font-family: 'Shadows Into Light', cursive;;
+    font-size: 30px;
+}
 
 .quote {
     font-family: 'Satisfy', cursive;
     font-size: 25px;
+    
 }
 
 .quote p:last-child {
@@ -99,5 +108,8 @@
     .products {
        bottom: 300px;
         
+    }
+    .logo h1 {
+        font-size: 50px;
     }
 }
