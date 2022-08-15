@@ -3,11 +3,21 @@
 {% block content %}
 <div class="flex justify-center">
    
+    {% if transaction and transaction.is_finished%}
 
-    <div class="flex justify-center mt-20">
-        <i class="uil uil-spinner animate-spin text-xl"></i>
-        <p>Listening for your transaction</p>
-    </div>
+        {% if transaction.is_finished %}
+            <p>Transaction complete </p>
+        {% else %}
+        <div class="flex justify-center mt-20">
+            <i class="uil uil-spinner animate-spin text-xl"></i>
+            <p>Listening for your transaction</p>
+        </div>
+        {% endif %}
+    {% else %}
+    
+    <p>No transaction </p>
+
+    {% endif %}
 
 </div>
 {% endblock %}

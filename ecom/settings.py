@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-tb9)ii5)-6rtg_y5))!qq5#tx@ey3x-1#48ds!#xqq^7$mtj=y
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'c87c-105-163-1-221.eu.ngrok.io',
+    'c696-105-163-1-221.in.ngrok.io',
     'localhost'
 ]
 
@@ -36,7 +36,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://c87c-105-163-1-221.eu.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['https://c696-105-163-1-221.in.ngrok.io']
 #Safaricom daraja API variables
 DARAJA_AUTH_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 BUSINESS_SHORT_CODE = 174379

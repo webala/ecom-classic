@@ -88,7 +88,7 @@ def initiate_stk_push(phone, amount):
             "PartyA":phone,    
             "PartyB":"174379",    
             "PhoneNumber":phone,    
-            "CallBackURL":"https://c87c-105-163-1-221.eu.ngrok.io/shop/order/confirm",    
+            "CallBackURL":"https://c696-105-163-1-221.in.ngrok.io/shop/callback",    
             "AccountReference":"ECOM CLASSIC",    
             "TransactionDesc":"Make Payment"
         }
