@@ -3,7 +3,7 @@ import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
 from .forms import ShippingAddressForm, CustomerForm
@@ -195,6 +195,13 @@ def confirm_payment(request, request_id):
         'transaction': transaction
     }
     return render(request, 'confirm_payment.html', context)
+
+def cart_items(request):
+    cart_data = get_cart_items(request)
+    cart_items = cart_data['order']['cart_items']
+
+    return JsonResponse({'cart_items': cart_items})
+
 
 def about(request):
     return render(request, 'about.html')

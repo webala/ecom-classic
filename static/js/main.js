@@ -1,3 +1,15 @@
+//Fetch number of cart items and set the value
+const cartItems = document.querySelector('.cart_items')
+const cartItemsEndpoint = '/shop/cart_items'
+fetch(cartItemsEndpoint)
+.then((res) => res.json())
+.then((data) => {
+    const items = data.cart_items
+    cartItems.innerHTML = items.toString()
+})
+.catch((error) => console.log(error))
+
+
 //function to get cookies
 function getCookie(name) {
     let cookieValue = null;
@@ -74,4 +86,6 @@ updateCartBtns.forEach((btn) => {
 
 //Button with .back class used for going back
 const backBtn = document.querySelector('.back')
-backBtn.addEventListener('click', () => history.back())
+if (backBtn) {
+    backBtn.addEventListener('click', () => history.back())
+}
