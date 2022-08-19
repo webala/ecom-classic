@@ -15,6 +15,7 @@ urlpatterns = [
     path('callback', mpesa_callback, name='mpesa_callback'),
     path('order/confirm/<request_id>', confirm_payment, name='confirm_payment'),
     path('transaction/<int:pk>', TransactionDetailView.as_view(), name='transaction'),
+    path('contact', MessageCreate.as_view(), name='contact-us'),
     path('', shop, name='shop'),
     path('category/<str:category_name>', CategoryListView.as_view(), name='product_per_category')
 ]

@@ -1,3 +1,4 @@
+from dataclasses import fields
 from itertools import product
 import json
 from django.shortcuts import render, get_object_or_404, redirect
@@ -10,6 +11,7 @@ from .forms import ShippingAddressForm, CustomerForm
 from shop.models import (
     CartItem,
     Category,
+    Message,
     Order,
     Product,
     ShippingAddress,
@@ -210,3 +212,9 @@ class TransactionDetailView(DetailView):
     model = TransactionDetails
     template_name: str = "transaction.html"
     context_object_name: str = "transaction"
+
+class MessageCreate(CreateView):
+    model = Message
+    template_name: str = 'message_form.html'
+    fields = ['name', 'email', 'message']
+    
