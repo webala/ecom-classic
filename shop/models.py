@@ -93,6 +93,13 @@ class TransactionDetails(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     is_finished = models.BooleanField(default=False)
     is_succesful = models.BooleanField(default=False)
+
+class Message(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    message = models.CharField(max_length=400)
+    date = models.DateTimeField(auto_now_add=True)
+    
     
 
 
