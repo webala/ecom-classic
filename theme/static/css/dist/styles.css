@@ -877,6 +877,18 @@ select {
   margin-bottom: 11rem;
 }
 
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-40 {
+  margin-bottom: 10rem;
+}
+
 .block {
   display: block;
 }
@@ -1163,6 +1175,14 @@ select {
 
 .pb-64 {
   padding-bottom: 16rem;
+}
+
+.pb-7 {
+  padding-bottom: 1.75rem;
+}
+
+.pb-72 {
+  padding-bottom: 18rem;
 }
 
 .text-xl {
@@ -1547,6 +1567,14 @@ select {
     align-items: flex-start;
   }
 
+  .md\:justify-between {
+    justify-content: space-between;
+  }
+
+  .md\:justify-evenly {
+    justify-content: space-evenly;
+  }
+
   .md\:p-12 {
     padding: 3rem;
   }
@@ -1577,6 +1605,26 @@ select {
   .md\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .md\:py-44 {
+    padding-top: 11rem;
+    padding-bottom: 11rem;
+  }
+
+  .md\:px-44 {
+    padding-left: 11rem;
+    padding-right: 11rem;
+  }
+
+  .md\:px-32 {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .md\:px-1 {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
   }
 
   .md\:pb-0 {
@@ -1645,6 +1693,11 @@ select {
     padding-right: 14rem;
   }
 
+  .xl\:px-44 {
+    padding-left: 11rem;
+    padding-right: 11rem;
+  }
+
   .xl\:pb-10 {
     padding-bottom: 2.5rem;
   }
@@ -1652,5 +1705,12 @@ select {
   .xl\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:px-60 {
+    padding-left: 15rem;
+    padding-right: 15rem;
   }
 }
