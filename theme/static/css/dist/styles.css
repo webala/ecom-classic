@@ -873,6 +873,10 @@ select {
   margin-top: 11rem;
 }
 
+.mb-44 {
+  margin-bottom: 11rem;
+}
+
 .block {
   display: block;
 }
@@ -1123,6 +1127,16 @@ select {
   padding-bottom: 5rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1133,6 +1147,22 @@ select {
 
 .pb-32 {
   padding-bottom: 8rem;
+}
+
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
+.pb-80 {
+  padding-bottom: 20rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.pb-64 {
+  padding-bottom: 16rem;
 }
 
 .text-xl {
@@ -1463,8 +1493,18 @@ select {
     margin-top: 15rem;
   }
 
+  .md\:mt-40 {
+    margin-top: 10rem;
+  }
+
   .md\:flex {
     display: flex;
+  }
+
+  .md\:h-fit {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 
   .md\:w-72 {
@@ -1534,6 +1574,23 @@ select {
     padding-right: 10rem;
   }
 
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .md\:pb-0 {
+    padding-bottom: 0px;
+  }
+
+  .md\:pb-32 {
+    padding-bottom: 8rem;
+  }
+
+  .md\:pb-44 {
+    padding-bottom: 11rem;
+  }
+
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -1586,6 +1643,10 @@ select {
   .xl\:px-56 {
     padding-left: 14rem;
     padding-right: 14rem;
+  }
+
+  .xl\:pb-10 {
+    padding-bottom: 2.5rem;
   }
 
   .xl\:text-2xl {
