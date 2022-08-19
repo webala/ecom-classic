@@ -2,20 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Pacifico&display=swap');
 * {
-    font-family: 'Libre Baskerville', serif;;
+    font-family: 'Libre Baskerville', serif;
 }
 
-.logo h1{
-    font-family: 'Shadows Into Light', cursive;;
+.logo h1 {
+    font-family: 'Pacifico', cursive;
     font-size: 30px;
 }
 
 .quote {
     font-family: 'Satisfy', cursive;
-    font-size: 25px;
-    
+    font-size: 25px; 
 }
 
 .quote p:last-child {
@@ -26,6 +25,11 @@
     border-radius: 10px;
     width: 250px;
     color: black;
+}
+
+.field textarea {
+    border-radius: 10px;
+    width: 300px;
 }
 
 
@@ -39,7 +43,7 @@
 
 .products {
     position: relative;
-    bottom: 550px;
+    
 }
 
 .dropdown-items {
@@ -97,7 +101,7 @@
         font-size: 20px;
     }
     .products {
-        bottom: 250px;
+        /* bottom: 250px; */
     }
 }
 
@@ -107,7 +111,7 @@
         transform: translateY(-400px);
     }
     .products {
-       bottom: 300px;
+       bottom: 400px;
         
     }
     .logo h1 {

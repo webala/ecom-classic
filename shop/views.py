@@ -1,5 +1,4 @@
-from dataclasses import fields
-from itertools import product
+from django.contrib.messages.views import SuccessMessageMixin
 import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -7,7 +6,7 @@ from django.urls import reverse
 from django.http import HttpResponse,JsonResponse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
-from .forms import ShippingAddressForm, CustomerForm
+from .forms import MessageForm, ShippingAddressForm, CustomerForm
 from shop.models import (
     CartItem,
     Category,
@@ -213,8 +212,12 @@ class TransactionDetailView(DetailView):
     template_name: str = "transaction.html"
     context_object_name: str = "transaction"
 
-class MessageCreate(CreateView):
-    model = Message
+class MessageCreate(SuccessMessageMixin, CreateView):
+    # model = Message
     template_name: str = 'message_form.html'
-    fields = ['name', 'email', 'message']
+    # fields = ['name', 'email', 'message']
+    form_class = MessageForm
+    success_message: str = 'Message sent. We will use your email to get back to you.'
+    success_url: str = '/shop'
+    
     

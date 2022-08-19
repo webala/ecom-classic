@@ -18,6 +18,15 @@
 	</head>
 
 	<body class="">
+		<div class="messages h-fit z-50 text-white">
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</div>
 		<div class="">
 			{% block content %}
 
