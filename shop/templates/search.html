@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="flex flex-col items-center relative">
+    {% include 'nav.html' %}
+    
+    <div class="search relative top-44 w-full flex flex-col">
+        <form action="#" method="post" class="w-full flex flex-col items-center">{% csrf_token %}
+            <div class="flex items-center px-3 py-1 rounded-lg w-2/3 md:w-1/2">
+                <input name="search_query" type="text" class="w-4/5 border border-stone-900 rounded-lg focus:outline-0">
+                <button type="submit" class="w-1/5">
+                    <i class="uil uil-search "></i>
+                </button>
+            </div>
+        </form>
+
+        {% if products %}
+            <div class="pb-32 grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap mt-16 px-10 sm:px-20 md:px-40 items-center">
+
+                {% for product in products %}
+        
+                {% include 'product.html' %}
+                
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    
+    
+    
+
+</div>
+
+{% endblock %}

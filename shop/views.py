@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.contrib.messages.views import SuccessMessageMixin
 import json
 from django.shortcuts import render, get_object_or_404, redirect
@@ -220,4 +221,14 @@ class MessageCreate(SuccessMessageMixin, CreateView):
     success_message: str = 'Message sent. We will use your email to get back to you.'
     success_url: str = '/shop'
     
+
+def search_view(request):
+    if request.method == 'POST':
+        query = request.POST['search_query']
+        products = list(Product.objects.filter(name__contains=query))
+        context = {
+           'products': products 
+        }
+        return render(request, 'search.html', context)
+    return render(request, 'search.html')
     
