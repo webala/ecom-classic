@@ -1,20 +1,20 @@
-<nav class="nav absolute top-10 flex flex-row px-11 md:px-16 xl:px-64  justify-between w-full text-xl xl:text-2xl">
-        <div class="logo transition duration-200 ease-in">
+<nav class="nav z-10 absolute top-10 flex flex-row px-11 md:px-16 xl:px-64  justify-between w-full text-xl xl:text-2xl">
+        <div class="logo">
             <h1>Art Lounge</h1>
         </div>
         <div class="nav-items">
             <ul class="flex justify-between">
-               <a href="/shop" class="mr-10">Home</a>
-               <a href="/shop/about" class="mr-10">About</a>
+               <a href="/shop" class="mr-10 hover:text-white">Home</a>
+               <a href="/shop/about" class="mr-10 hover:text-white">About</a>
                 <div class="dropdown flex flex-col relative justify-between  mr-10">
-                    <a href="/shop/products">Products <i class="uil uil-angle-double-down"></i></a>
+                    <a href="/shop/products" class="hover:text-white">Products <i class="uil uil-angle-double-down"></i></a>
                     <div class="dropdown-items flex flex-col items-end">
-                        <a href="/shop/category/Painting">Paintings</a>
-                        <a href="/shop/category/T-Shirt">T-Shirts</a>
+                        <a href="/shop/category/Painting" class="hover:text-white">Paintings</a>
+                        <a href="/shop/category/T-Shirt" class="hover:text-white">T-Shirts</a>
                     </div>
                 </div>
-                <a href="#" class="search mr-10"><i class="uil uil-search"></i></a>
-                <a href="/shop/cart" class="search flex">
+                <a href="/shop/search" class="search mr-10 hover:text-white"><i class="uil uil-search"></i></a>
+                <a href="/shop/cart" class="search flex hover:text-white">
                     <i class="uil uil-shopping-cart"></i>
                     <p class="cart_items text-red-600 text-xs"></p>
                 </a>
@@ -22,8 +22,8 @@
         </div>
         <div class="nav-icon absolute right-8 ">
             <i class="uil uil-bars" id="nav-icon"></i>
-            <a href="#"><i class="uil uil-search"></i></a>
-            <a href="/shop/cart">
+            <a href="/shop/search" class="hover:text-white"><i class="uil uil-search"></i></a>
+            <a href="/shop/cart" class="hover:text-white">
                 <i class="uil uil-shopping-cart"></i>
                 <p class="cart_items text-red-600"></p>
             </a>
@@ -31,10 +31,5 @@
 </nav>
 
 <script defer>
-    const navIcon = document.getElementById('nav-icon')
-    const navItems = document.querySelector('.nav-items')
-
-    navIcon.addEventListener('click', () => {
-        navItems.classList.toggle('toggle')
-    })
+    
 </script>

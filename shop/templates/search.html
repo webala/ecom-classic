@@ -8,7 +8,8 @@
     <div class="search relative top-44 w-full flex flex-col">
         <form action="#" method="post" class="w-full flex flex-col items-center">{% csrf_token %}
             <div class="flex items-center px-3 py-1 rounded-lg w-2/3 md:w-1/2">
-                <input name="search_query" type="text" class="w-4/5 border border-stone-900 rounded-lg focus:outline-0">
+                <input name="search_query" type="text" class="w-4/5 border border-stone-900 rounded-lg focus:outline-0"
+                placeholder="Search our store">
                 <button type="submit" class="w-1/5">
                     <i class="uil uil-search "></i>
                 </button>

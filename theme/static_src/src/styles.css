@@ -11,10 +11,25 @@
     font-family: 'Pacifico', cursive;
     font-size: 30px;
 }
-
+.logo {
+    transform: translateX(-500px);
+    transition: 0.9s ease-in-out;
+}
+.logo.loaded {
+    transform: translateX(0);
+}
 .quote {
     font-family: 'Satisfy', cursive;
     font-size: 25px; 
+    transform: translateX(1000px);
+    transition: 0.9s ease-in-out;
+    z-index: 100;
+    color: black;
+}
+
+.quote.loaded {
+    transform: translateX(0);
+     color: white;
 }
 
 .quote p:last-child {
@@ -43,7 +58,13 @@
 
 .products {
     position: relative;
+    transform: translateY(500px);
+    transition: 0.9s ease-in-out;
     
+}
+
+.products.loaded {
+    transform: translateY(0);  
 }
 
 .dropdown-items {
@@ -56,6 +77,12 @@
 
 .nav-items {
     visibility: hidden;
+    transform: translateY(-200px);
+}
+
+.nav-items.loaded {
+    transform: translateX(0);
+    transition: 0.9s ease-in-out;
 }
 
 .nav-icon {
@@ -84,6 +111,23 @@
 }
 .nav-items.toggle ul .search {
     visibility: hidden;
+}
+
+.slide-show {
+    /* transform: translateY(-700px); */
+    transition: 0.7s ease-in-out;
+}
+
+.slide-show.loaded {
+    /* transform: translateY(0); */
+}
+.cart-items {
+    transform: translateY(300px);
+    transition: 0.9s ease-in-out;
+}
+
+.cart-items.loaded {
+    transform: translateY(20px);
 }
 
 @media screen and (min-width: 640px) {

@@ -39,5 +39,31 @@
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>
 	<script src="{% static 'js/main.js' %}" defer></script>
+	<script defer>
+		const products = document.querySelector('.products')
+		const quote = document.querySelector('.quote')
+		const navIcon = document.getElementById('nav-icon')
+		const navItems = document.querySelector('.nav-items')
+		const logo = document.querySelector('.logo')
+		const cartItems = document.querySelector('.cart-items')
+		
+
+		navIcon.addEventListener('click', () => {
+			navItems.classList.toggle('toggle')
+		})
+
+		window.onload = () => {
+			logo.classList.add('loaded')
+			navItems.classList.add('loaded')
+			quote.classList.add('loaded')
+			cartItems.classList.add('loaded')
+		}
+
+		window.addEventListener('scroll', () => {
+			products.classList.toggle('loaded', window.scrollY > 0)
+			// cartItems.classList.toggle('loaded', window.scrollY > 0)
+		})
+
+	</script>
 
 </html>
