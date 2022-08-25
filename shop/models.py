@@ -99,6 +99,7 @@ class Message(models.Model):
     email = models.EmailField()
     message = models.CharField(max_length=400)
     date = models.DateTimeField(auto_now_add=True)
+    read = models.BooleanField(default=False)
     
     
 
