@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count
-from shop.models import Product
+from shop.models import Category, Product
 # Create your views here.
 
 
@@ -26,3 +26,16 @@ def dashboard(request):
     }
 
     return render(request, "dashboard.html", context)
+
+def dash_products(request):
+    products = Product.objects.all()
+    categories = Category.objects.all()
+
+    context = {
+        'products': products,
+        'categories': categories,
+        'total_products': products_count(),
+        'total_categories': category_count()
+    }
+
+    return render(request, 'dash/products.html', context)

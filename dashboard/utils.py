@@ -1,4 +1,4 @@
-from shop.models import Customer, Message, Product, Category, Order
+from shop.models import Customer, Message, Product, Category, Order, TransactionDetails
 from datetime import datetime, timedelta
 
 
@@ -11,7 +11,7 @@ def category_count():
 def count_sales(days):
     start_date = datetime.now()
     end_date = start_date - timedelta(days=days)
-    
+
     orders = Order.objects.filter(
         date_created__range=[start_date, end_date],
         processed=True
@@ -29,3 +29,7 @@ def count_customers():
 
 def get_products_worth():
     return sum([product.price for product in Product.objects.all()])
+
+def get_graph_data():
+    transactions = TransactionDetails.objects.all()
+    

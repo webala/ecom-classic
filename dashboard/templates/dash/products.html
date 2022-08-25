@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dash-products flex flex-col px-10 md:px-55 xl:px-64">
+
+    <div class="flex my-20 items-center">
+        <h1 class="font-bold md:text-2xl underline">All Products</h1>
+        <p class="ml-20 xl:ml-52 font-semibold">{{total_products}} products in {{total_categories}} categories</p>
+    </div>
+    {% for category in categories %}
+        <div>
+            <h1 class="font-bold text-2xl underline" >{{category.name}}</h1>
+             <table class="table-auto">
+                <thead class="uppercase text-left">
+                <tr>
+                    <th class="py-3 px-6">#</th>
+                    <th class="py-3 px-6">Name</th>
+                    <th class="py-3 px-6">Price</th>
+                    <th class="py-3 px-6">Inventory</th>
+                    <th class="py-3 px-6">#</th>
+                </tr>
+                </thead>
+                <tbody>
+            
+                {% for product in products %}
+                    {% if product.category == category %}
+                    <tr>
+                        <td class="py-4 px-6 ">
+                            <img src="{{product.image_url}}" alt="" class="w-16 rounded-lg">
+                        </td>
+                        <td class="py-4 px-6 ">
+                            {{product.name}}                        
+                        </td>
+                        <td class="py-4 px-6 ">
+                            {{product.price}}
+                        </td>
+                        <td class="py-4 px-6 ">
+                           {{product.inventory}}
+                        </td>
+                        <td class="py-4 px-6 ">
+                           <a href="#" class="text-red-300 text-xl hover:text-red-700 transition duration-300 ease-in-out">
+                            <i class="uil uil-trash-alt"></i>
+                           </a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        
+    {% endfor %}
+</div>
+
+{% endblock %}
