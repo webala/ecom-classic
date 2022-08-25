@@ -41,9 +41,6 @@ console.log('cart: ', cart)
 const modifyCartCookie = (action, productId) => {
     // Modifies the cart cookie and updates the value of cart in document.cookie
 
-    
-    
-
     if (action === 'add') {
         console.log('action: ', action)
         if (cart[productId] == undefined) {
@@ -89,3 +86,39 @@ const backBtn = document.querySelector('.back')
 if (backBtn) {
     backBtn.addEventListener('click', () => history.back())
 }
+
+
+//SOME ANIMATIONS
+
+    const products = document.querySelector('.products')
+    const quote = document.querySelector('.quote')
+    const navIcon = document.getElementById('nav-icon')
+    const navItems = document.querySelector('.nav-items')
+    const logo = document.querySelector('.logo')
+    const cartItemsList = document.querySelector('.cart-items')
+    
+
+    navIcon.addEventListener('click', () => {
+        navItems.classList.toggle('toggle')
+    })
+
+    window.onload = () => {
+        if (cartItemsList) {
+            cartItemsList.classList.add('loaded')
+        }
+        if (logo) {
+            logo.classList.add('loaded')
+        }
+        if (navItems) {
+            navItems.classList.add('loaded')
+        }
+        if (quote) {
+            quote.classList.add('loaded')
+        }
+        
+    }
+
+    window.addEventListener('scroll', () => {
+        products.classList.toggle('loaded', window.scrollY > 0)
+        // cartItems.classList.toggle('loaded', window.scrollY > 0)
+    })
