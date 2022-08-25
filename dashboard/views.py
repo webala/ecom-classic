@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic.edit import UpdateView
 from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count
 from shop.models import Category, Product
 # Create your views here.
@@ -39,3 +40,16 @@ def dash_products(request):
     }
 
     return render(request, 'dash/products.html', context)
+
+def delete_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    if product:
+        product.delete()
+    
+    return redirect('dash-products')
+
+class UpdateProduct(UpdateView):
+    model = Product
+    fields = ['name', 'price', 'category', 'inventory', 'image']
+    template_name: str = 'dash/product_update.html'
+    success_url: str = '/dashboard/products'

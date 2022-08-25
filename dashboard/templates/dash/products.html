@@ -3,14 +3,17 @@
 {% block content %}
 
 <div class="dash-products flex flex-col px-10 md:px-55 xl:px-64">
-
-    <div class="flex my-20 items-center">
-        <h1 class="font-bold md:text-2xl underline">All Products</h1>
-        <p class="ml-20 xl:ml-52 font-semibold">{{total_products}} products in {{total_categories}} categories</p>
+    <div class="back flex justify-start items-center cursor-pointer group my-10">
+            <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+            <p class="ml-2">Back to dashboard</p>
+        </div>
+    <div class="bg-slate-800 flex justify-between  w-2/3 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg">
+        <p><span class="font-bold text-2xl">{{total_products}}</span> products</p>
+        <p><span class="font-bold text-2xl">{{total_categories}}</span> categories</p>
     </div>
     {% for category in categories %}
         <div>
-            <h1 class="font-bold text-2xl underline" >{{category.name}}</h1>
+            <h1 class="font-bold text-2xl underline" >{{category.name}}{{total_categories|pluralize}}</h1>
              <table class="table-auto">
                 <thead class="uppercase text-left">
                 <tr>
@@ -18,6 +21,7 @@
                     <th class="py-3 px-6">Name</th>
                     <th class="py-3 px-6">Price</th>
                     <th class="py-3 px-6">Inventory</th>
+                    <th class="py-3 px-6">#</th>
                     <th class="py-3 px-6">#</th>
                 </tr>
                 </thead>
@@ -39,9 +43,14 @@
                            {{product.inventory}}
                         </td>
                         <td class="py-4 px-6 ">
-                           <a href="#" class="text-red-300 text-xl hover:text-red-700 transition duration-300 ease-in-out">
+                           <a href="/dashboard/products/delete/{{product.id}}" class="text-red-300 text-xl hover:text-red-700 transition duration-300 ease-in-out">
                             <i class="uil uil-trash-alt"></i>
                            </a>
+                        </td>
+                        <td class="py-4 px-6 ">
+                            <a href="/dashboard/product/edit/{{product.id}}">
+                                <i class="uil uil-edit-alt text-xl text-blue-500"></i>
+                            </a>
                         </td>
                     </tr>
                     {% endif %}
