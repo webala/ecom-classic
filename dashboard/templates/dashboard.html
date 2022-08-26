@@ -27,59 +27,66 @@
             </ul>
         </div>
     </div>
- 
+
     <div class="flex flex-col items-center">
         <a href="#" class="w-2/3">
-            <div class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg sales">
+            <div
+                class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg sales">
                 <h1 class="font-bold text-2xl">Sales summary</h1>
                 <div class="flex mt-9">
                     <div class="">
                         <i class="text-2xl uil uil-money-bill"></i>
                         <p><span class="font-bold text-2xl">{{week_sales.number_of_sales}}</span> sales this week</p>
-                        <p class="font-semibold">Total: ksh <span class="font-bold text-2xl">{{week_sales.sales_amount}}</span></p>
+                        <p class="font-semibold">Total: ksh <span
+                                class="font-bold text-2xl">{{week_sales.sales_amount}}</span></p>
                     </div>
                     <div class="ml-10 xl:ml-52">
                         <i class="text-2xl uil uil-money-bill"></i>
                         <p><span class="font-bold text-2xl">{{month_sales.number_of_sales}}</span> sales this month</p>
-                        <p class="font-semibold">Total: ksh <span class="font-bold text-2xl">{{week_sales.sales_amount}}</span></p>
+                        <p class="font-semibold">Total: ksh <span
+                                class="font-bold text-2xl">{{week_sales.sales_amount}}</span></p>
                     </div>
-                </div>  
+                </div>
             </div>
         </a>
-        <div class="tabs flex flex-col sm:flex-row flex-wrap sm:items-center sm:justify-center"> 
+        <div class="tabs flex flex-col sm:flex-row flex-wrap sm:items-center sm:justify-center">
             <a href="#">
-                <div class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg messages">
+                <div
+                    class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg messages">
                     {% if customer_messages > 0 %}
-                        <i class="text-2xl uil uil-comment-alt-message animate-bounce"></i>
+                    <i class="text-2xl uil uil-comment-alt-message animate-bounce"></i>
                     {% else %}
-                        <i class="text-2xl uil uil-comment-alt-message"></i>
+                    <i class="text-2xl uil uil-comment-alt-message"></i>
                     {% endif %}
                     <p><span class="font-bold text-2xl">{{customer_messages}}</span> new messages</p>
                 </div>
             </a>
-            <a href="#">
-                <div class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg customers">
+            <a href="/dashboard/customers">
+                <div
+                    class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg customers">
                     <i class="text-2xl uil uil-user-arrows"></i>
                     <p><span class="font-bold text-2xl">{{customers}}</span> customers</p>
                 </div>
             </a>
 
             <a href="/dashboard/products">
-                <div class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg">
+                <div
+                    class="bg-slate-800 hover:bg-slate-700 transition duration-300 ease-in-out flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg">
                     <p><span class="font-bold text-2xl">{{products}}</span> products</p>
                     <p><span class="font-bold text-2xl">{{categories}}</span> categories</p>
                 </div>
             </a>
-            
-            <div class="bg-slate-800 flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg categories">
+
+            <div
+                class="bg-slate-800 flex flex-col justify-center sm:w-64 sm:h-28 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg categories">
                 <p class="font-semibold">Products Total Worth: ksh <span class="font-bold">{{products_worth}}</span></p>
             </div>
-            
+
         </div>
     </div>
     <div class="sales-graph">
 
     </div>
-   
+
 </div>
 {% endblock %}

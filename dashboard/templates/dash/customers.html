@@ -1,7 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="customers">
-    
+<div class="customers flex flex-col px-2">
+    <div class="flex flex-col items-start mt-20">
+        <div class="back flex justify-start items-center cursor-pointer group my-10 relative left-10">
+            <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+            <a href="/dashboard/" class="ml-2 hover:text-black">Back to dashboard</a>
+        </div>
+        <h1 class="text-2xl font-bold">Customer List</h1>
+        <div class="mt-20">
+            <table class="table-auto">
+                <thead class="uppercase text-left">
+                    <tr>
+                        <th class="py-3 px-6">First Name</th>
+                        <th class="py-3 px-6">Last Name</th>
+                        <th class="py-3 px-6">Phone</th>
+                        <th class="py-3 px-6">Email</th>
+                        <th class="py-3 px-6">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for customer in customers %}
+                    <tr>
+                        <td class="py-4 px-6 ">
+                            {{customer.first_name}}
+                        </td>
+                        <td class="py-4 px-6 ">
+                            {{customer.last_name}}
+                        </td>
+                        <td class="py-4 px-6 ">
+                            {{customer.phone}}
+                        </td>
+                        <td class="py-4 px-6 ">
+                            {{customer.email}}
+                        </td>
+                        <td class="py-4 px-6 ">
+                            <a href="#">
+                                <i class="uil uil-envelope text-xl text-blue-500"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}
