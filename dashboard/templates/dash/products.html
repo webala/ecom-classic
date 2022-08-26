@@ -5,15 +5,25 @@
 <div class="dash-products flex flex-col px-10 md:px-55 xl:px-64">
     <div class="back flex justify-start items-center cursor-pointer group my-10">
             <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
-            <p class="ml-2">Back to dashboard</p>
+            <a href="/dashboard/" class="ml-2 hover:text-black">Back to dashboard</a>
         </div>
     <div class="bg-slate-800 flex justify-between  w-2/3 h-fit mb-5 mx-2 px-4 py-4 text-white rounded-lg">
         <p><span class="font-bold text-2xl">{{total_products}}</span> products</p>
         <p><span class="font-bold text-2xl">{{total_categories}}</span> categories</p>
+        <a href="/shop/product/add" class="hover:text-white">
+            <button class="bg-cyan-900 rounded-lg p-2 hover:scale-110 transition duration-300 ease-in-out">
+               <p> Add Product</p>
+            </button>
+        </a>
+        <a href="/shop/category/add" class="hover:text-white">
+            <button class="bg-cyan-900 rounded-lg p-2 hover:scale-110 transition duration-300 ease-in-out">
+               <p> Add Category</p>
+            </button>
+        </a>
     </div>
     {% for category in categories %}
-        <div>
-            <h1 class="font-bold text-2xl underline" >{{category.name}}{{total_categories|pluralize}}</h1>
+        <div class="mt-16">
+            <h1 class="font-bold text-2xl" >{{category.name}}{{total_categories|pluralize}}</h1>
              <table class="table-auto">
                 <thead class="uppercase text-left">
                 <tr>
