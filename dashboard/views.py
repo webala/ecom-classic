@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import UpdateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count
-from shop.models import Category, Customer, Product
+from shop.models import Category, Customer, Message, Product
 # Create your views here.
 
 
@@ -60,3 +60,14 @@ class CustomersView(ListView):
     template_name = 'dash/customers.html'
     fields = ['first_name', 'last_name', 'phone', 'email']
     context_object_name: str = 'customers'
+
+class MessagesView(ListView):
+    model = Message
+    template_name: str = 'dash/messages.html'
+    fields = ['name', 'email', 'message', 'date', 'read']
+    context_object_name: str = 'customer_messages'
+
+class MessageDetailView(DetailView):
+    model = Message
+    template = 'dash/message_detail.html'
+    context_object_name: str = 'customer_message'
