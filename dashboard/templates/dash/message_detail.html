@@ -33,7 +33,7 @@
         <form action="#">
             <h1 class="font-semibold">Send a message</h1>
             {% csrf_token %}
-
+            <input type="hidden" value="{{customer_message.id}}" name="customer_message_id">
             <div class="my-3 flex flex-col">
                 <label for="reference">Reference</label>
                 <input class="rounded-lg" name="reference" type="text">

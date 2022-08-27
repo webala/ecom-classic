@@ -941,6 +941,10 @@ select {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-fit {
   height: -webkit-fit-content;
   height: -moz-fit-content;
