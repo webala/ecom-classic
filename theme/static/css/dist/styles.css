@@ -789,14 +789,6 @@ select {
   left: 0.75rem;
 }
 
-.right-5 {
-  right: 1.25rem;
-}
-
-.right-10 {
-  right: 2.5rem;
-}
-
 .left-10 {
   left: 2.5rem;
 }
@@ -868,6 +860,11 @@ select {
   margin-bottom: 1rem;
 }
 
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -922,6 +919,10 @@ select {
 
 .mt-40 {
   margin-top: 10rem;
+}
+
+.mt-44 {
+  margin-top: 11rem;
 }
 
 .block {
@@ -1105,6 +1106,10 @@ select {
   justify-content: flex-start;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -1156,16 +1161,6 @@ select {
 .border-blue-500 {
   --tw-border-opacity: 1;
   border-color: rgb(59 130 246 / var(--tw-border-opacity));
-}
-
-.border-red-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
-}
-
-.border-red-100 {
-  --tw-border-opacity: 1;
-  border-color: rgb(254 226 226 / var(--tw-border-opacity));
 }
 
 .bg-zinc-900 {
@@ -1259,14 +1254,14 @@ select {
   padding-right: 0.75rem;
 }
 
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .pb-64 {
@@ -1340,14 +1335,14 @@ select {
   color: rgb(153 27 27 / var(--tw-text-opacity));
 }
 
-.text-red-300 {
-  --tw-text-opacity: 1;
-  color: rgb(252 165 165 / var(--tw-text-opacity));
-}
-
 .text-blue-500 {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.text-red-300 {
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1575,15 +1570,6 @@ select {
 
 .hover\:border:hover {
   border-width: 1px;
-}
-
-.hover\:border-2:hover {
-  border-width: 2px;
-}
-
-.hover\:border-black:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .hover\:bg-slate-700:hover {
@@ -1833,14 +1819,6 @@ select {
     width: 50%;
   }
 
-  .xl\:w-2 {
-    width: 0.5rem;
-  }
-
-  .xl\:w-1 {
-    width: 0.25rem;
-  }
-
   .xl\:flex-row {
     flex-direction: row;
   }
@@ -1875,11 +1853,6 @@ select {
   .xl\:px-56 {
     padding-left: 14rem;
     padding-right: 14rem;
-  }
-
-  .xl\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   .xl\:pb-10 {

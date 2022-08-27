@@ -8,4 +8,5 @@ urlpatterns = [
     path('product/edit/<pk>', UpdateProduct.as_view(), name='update-product'),
     path('customers', CustomersView.as_view(), name='customers'),
     path('messages', MessagesView.as_view(), name='messages'),
+    path('message/<pk>', MessageDetailView.as_view(), name='message'),
 ]

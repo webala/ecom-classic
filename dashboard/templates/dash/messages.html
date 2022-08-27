@@ -6,7 +6,7 @@
         <h1 class="font-bold text-2xl">Messages</h1>
         <div class="w-full">
             {% for message in customer_messages %}
-            <a href="#" class="hover:text-black">
+            <a href="/dashboard/message/{{message.id}}" class="hover:text-black">
                 <div {% if message.read %} class="border rounded-lg my-4 p-2 " {% else %}
                     class="border-2 border-blue-500 hover:border transition duration-300 ease-in-out rounded-lg my-4 p-2" {% endif %}>
                     <div class="flex justify-between">

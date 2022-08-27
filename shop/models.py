@@ -1,4 +1,4 @@
-
+from django.utils import timezone
 from django.db import models
 
 # Create your models here.
@@ -101,6 +101,8 @@ class Message(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     read = models.BooleanField(default=False)
     
-    
-
+class Reply(models.Model):
+    message = models.ForeignKey(Message, on_delete=models.CASCADE)
+    reply = models.CharField(max_length=400)
+    date = models.DateTimeField(auto_now_add=True)
 

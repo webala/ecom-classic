@@ -69,5 +69,9 @@ class MessagesView(ListView):
 
 class MessageDetailView(DetailView):
     model = Message
-    template = 'dash/message_detail.html'
+    template_name = 'dash/message_detail.html'
     context_object_name: str = 'customer_message'
+
+
+def create_reply(request):
+    pass
