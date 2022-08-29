@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseNotAllowed
 from django.views.generic.edit import UpdateView
 from django.views.generic import ListView, DetailView
-from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count
-from shop.models import Category, Customer, Message, Product
+from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count, send_email
+from shop.models import Category, Customer, Message, Product, Reply
 # Create your views here.
 
 
@@ -72,6 +73,43 @@ class MessageDetailView(DetailView):
     template_name = 'dash/message_detail.html'
     context_object_name: str = 'customer_message'
 
+    def get_object(self):
+
+        #Mark message as read
+        obj = super().get_object()
+        obj.read = True
+        obj.save()
+        return obj
+
+    def get_context_data(self, **kwargs):
+
+        #get message replies if any
+        context = super().get_context_data(**kwargs)
+        message = context['customer_message']
+        replies = Reply.objects.filter(message=message)
+        context['replies'] = replies 
+        return context
+
 
 def create_reply(request):
-    pass
+    if request.method == 'POST':
+        print('post request received')
+        data = request.POST
+        subject = data.get('subject')
+        body = data.get('body')
+        message_id = data.get('customer_message_id')
+        message = Message.objects.get(id=message_id)
+        receiver = message.email
+
+        send_email(subject, body, receiver)
+
+        Reply.objects.create(
+            subject=subject,
+            message=message,
+            body=body
+        )
+        return redirect('/dashboard/message/{}'.format(message_id))
+    else:
+        print('method not allowed')
+        return HttpResponseNotAllowed('Method not allowed')
+

@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 
-#Products will be grouped into different categories.
+# Products will be grouped into different categories.
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
@@ -27,12 +27,13 @@ class Product(models.Model):
     def image_url(self):
         return self.image.url
 
+
 # class Rating(models.Model):
 #     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 #     rating = models.IntegerChoices()
 
 
-#customer Details
+# customer Details
 class Customer(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
@@ -40,10 +41,10 @@ class Customer(models.Model):
     phone = models.CharField(max_length=12)
 
     def __str__(self) -> str:
-        return self.first_name + ' ' + self.last_name
+        return self.first_name + " " + self.last_name
 
 
-#Delivery Address for products
+# Delivery Address for products
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     location = models.CharField(max_length=20)
@@ -51,39 +52,42 @@ class ShippingAddress(models.Model):
     house_no = models.CharField(max_length=20)
 
     def __str__(self) -> str:
-        return self.location + ' ' + self.estate
+        return self.location + " " + self.estate
 
-#This model will translate to cart in the client side
+
+# This model will translate to cart in the client side
 class Order(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     processed = models.BooleanField(default=False)
-    shipping_address = models.ForeignKey(ShippingAddress, on_delete=models.SET_NULL, null=True)
+    shipping_address = models.ForeignKey(
+        ShippingAddress, on_delete=models.SET_NULL, null=True
+    )
 
-    #this function returns the number of items in an order(cart)
+    # this function returns the number of items in an order(cart)
     @property
     def cart_items(self):
         cart_items = self.cartitem_set.all()
         return sum([item.quantity for item in cart_items])
-    
-    #This function return the total price of the order
+
+    # This function return the total price of the order
     @property
     def cart_total(self):
         cart_items = self.cartitem_set.all()
         return sum([item.item_total for item in cart_items])
 
 
-#individual items in an order(cart)
+# individual items in an order(cart)
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     cart = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     quantity = models.IntegerField()
 
-
     @property
     def item_total(self):
         return self.quantity * self.product.price
 
-#Transaction details for paymetents made
+
+# Transaction details for paymetents made
 class TransactionDetails(models.Model):
     request_id = models.CharField(max_length=100)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
@@ -94,15 +98,17 @@ class TransactionDetails(models.Model):
     is_finished = models.BooleanField(default=False)
     is_succesful = models.BooleanField(default=False)
 
+
 class Message(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
     message = models.CharField(max_length=400)
     date = models.DateTimeField(auto_now_add=True)
     read = models.BooleanField(default=False)
-    
-class Reply(models.Model):
-    message = models.ForeignKey(Message, on_delete=models.CASCADE)
-    reply = models.CharField(max_length=400)
-    date = models.DateTimeField(auto_now_add=True)
 
+
+class Reply(models.Model):
+    subject = models.CharField(max_length=50)
+    message = models.ForeignKey(Message, on_delete=models.CASCADE)
+    body = models.CharField(max_length=400)
+    date = models.DateTimeField(auto_now_add=True)
