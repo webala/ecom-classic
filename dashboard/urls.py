@@ -10,5 +10,6 @@ urlpatterns = [
     path('messages', MessagesView.as_view(), name='messages'),
     path('message/<pk>', MessageDetailView.as_view(), name='message'),
     path('reply', create_reply, name='create_reply'),
-    path('mass_message', mass_message, name='mass_message')
+    path('mass_message', mass_message, name='mass_message'),
+    path('transactions', TransactionsView.as_view(), name='transactions')
 ]

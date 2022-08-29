@@ -2,17 +2,16 @@
 
 
 {% block content %}
-<div class="w-full text-white relative">
-    {% include 'slide_show.html' %}
+<div class="w-full text-white relative min-h-screen">
     {% include 'nav.html' %}
 
     <div class="pb-32 grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap products px-10 sm:px-20 md:px-40 items-center">
         <div class="m-5 text-black">
-            <div class="categories">
+            <div class="categories text-textPrimary">
                 <ul>
-                    <li class="leading-2" ><a href="/shop/products">All</a></li>
-                    <li><a href="/shop/category/T-Shirt">T-Shirts</a></li>
-                    <li><a href="/shop/category/Painting">Paintings</a></li>
+                    <li class="leading-2" ><a class="hover:text-textSecondary" href="/shop/products">All</a></li>
+                    <li><a class="hover:text-textSecondary" href="/shop/category/T-Shirt">T-Shirts</a></li>
+                    <li><a class="hover:text-textSecondary" href="/shop/category/Painting">Paintings</a></li>
                 </ul>
             </div>
         </div>
@@ -23,9 +22,7 @@
         {% endfor %}
         
     </div>
-    <div class="relative mt-20">
-        {% include 'footer.html' %}
-    </div>
+    {% include 'footer.html' %}
 </div>
 
 {% endblock %}

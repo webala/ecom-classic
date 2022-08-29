@@ -3,6 +3,20 @@
 {% block content %}
 
 <div class="process-order flex flex-col items-center">
+    <div class="flex justify-between items-end w-full px-10 md:px-44 xl:px-64" >
+        <div class="back flex justify-start items-center cursor-pointer group my-10">
+            <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+            <p class="ml-2 hover:text-textSecondary">Back</p>
+        </div>
+        <div class="p-10 flex">
+            <p>Cart</p>
+            <i class="uil uil-angle-right"></i>
+            <p>Checkout</p>
+            <i class="uil uil-angle-right"></i>
+            <p class="text-textSecondary">Payment</p>
+        </div>
+    </div>
+    
     <div class="p-5 md:p-40">
         <p class="my-10">Confirm that the number below is your m-pesa number.</p>
         <form action="#" method="post">{% csrf_token %}
@@ -10,7 +24,7 @@
                 <input type="text" value="{{phone}}" name="phone" id="phone">
             </div>
             
-            <button class="bg-slate-900 my-4 text-white p-2 rounded-lg" type="submit">Proceed</button>
+            <button class="bg-backgroundSecondary hover:scale-110 transition duration-300 ease-in-out my-4 text-white p-2 rounded-lg" type="submit">Proceed</button>
         </form>
     </div> 
 </div>

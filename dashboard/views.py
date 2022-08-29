@@ -1,9 +1,10 @@
+from dataclasses import field
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotAllowed
 from django.views.generic.edit import UpdateView
 from django.views.generic import ListView, DetailView
 from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count, send_email
-from shop.models import Category, Customer, Message, Product, Reply
+from shop.models import Category, Customer, Message, Product, Reply, TransactionDetails
 # Create your views here.
 
 
@@ -90,6 +91,12 @@ class MessageDetailView(DetailView):
         replies = Reply.objects.filter(message=message)
         context['replies'] = replies 
         return context
+
+class TransactionsView(ListView):
+    model = TransactionDetails
+    template_name: str = 'dash/transactions.html'
+    context_object_name = 'transactions'
+    fields = ['order', 'receipt_number', 'amount', 'phone_number', 'date', 'is_successful']
 
 
 def create_reply(request):

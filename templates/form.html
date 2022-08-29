@@ -2,7 +2,7 @@
     {% csrf_token %}
 
     {% for field in form %}
-    <div class="field flex flex-col text-black text-xl my-2">
+    <div class="field flex flex-col text-textPrimary text-xl my-2">
         {{ field.errors }}
         {{ field.label_tag }} {{ field }}
         {% if field.help_text %}
@@ -10,5 +10,5 @@
         {% endif %}
     </div>
     {% endfor %}
-    <button class="bg-slate-900 text-white p-2 my-5 rounded-lg" type="submit">Done</button>
+    <button class="bg-backgroundSecondary text-textPrimary hover:scale-100 transition duration-300 ease-in-out p-2 my-5 rounded-lg" type="submit">Done</button>
 </form>

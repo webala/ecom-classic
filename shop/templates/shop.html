@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block content %}
-<div class="shop w-full text-white relative h-fit">
-    {% include 'slide_show.html' %}
+<div class="shop w-full text-black relative h-fit text-textPrimary">
+    
     {% include 'nav.html' %}
-    <div class="products px-3 md:px-20 flex flex-col items-center text-black pb-64 md:pb-44 xl:pb-10 h-fit ">
+    <div class="products text-textPrimary px-3 md:px-20 flex flex-col items-center text-black pb-64 md:pb-44 xl:pb-10 h-fit ">
         {% if latest_product %}
-            <div class="flex flex-col items-start">
+            <div class="flex flex-col items-start text-textPrimary">
 
             <h1 class="text-2xl p-10 underline">New release</h1>
             <div class="latest sm:flex">
@@ -34,7 +34,7 @@
 
             {% if best_sellers %}
 
-            <div class="flex flex-col items-center mt-40">
+            <div class="flex flex-col items-center mt-40 text-textPrimary">
                 <h1 class="text-2xl p-10 underline">Best sellers</h1>
 
                 <div class="best-sellers grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap sm:px-20 md:px-40 items-center">

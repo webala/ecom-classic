@@ -43,6 +43,13 @@ module.exports = {
     ],
     theme: {
         extend: {},
+        colors: {
+            backgroundPrimary: '#2C3333',
+            backgroundSecondary: '#395B64',
+            textPrimary: '#E7F6F2',
+            textSecondary: '#A5C9CA',
+            danger: '#ad0909'
+        }
     },
     plugins: [
         /**
