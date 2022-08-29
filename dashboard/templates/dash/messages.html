@@ -2,13 +2,39 @@
 
 {% block content %}
 <div class="customer_messages px-2 md:px-44 xl:px-64 flex flex-col items-center w-full">
+    <div class="flex flex-col md:flex-row justify-between w-full md:w-2/3 xl:w-1/2">
+        <div class="flex justify-start items-center cursor-pointer group my-10 ">
+            <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+            <a href="/dashboard" class="ml-2 hover:text-black">Back</a>
+        </div>
+
+        <form action="/dashboard/mass_message" method="POST"
+            class="mt-20 w-full md:w-2/3 xl:w-1/2 flex flex-col items-end">
+            <div class="flex flex-end">
+                <p class="font-semibold">Send message to all customers</p>
+            </div>
+            <div class="my-2 flex flex-col">
+                <label for="subject">Subject</label>
+                <input name="subject" type="text" class="rounded-lg border-2 border-slate-900">
+            </div>
+            <div class="my-2 flex flex-col w-full">
+                <label for="body">Message</label>
+                <textarea class="rounded-lg border-2 border-slate-900 " name="body" id="body" cols="60"
+                    rows="2"></textarea>
+            </div>
+            <button
+                class="my-2 rounded-lg bg-slate-900 p-2 hover:scale-110 transition duration-300 ease-in-out text-white"
+                type="submit">Send</button>
+        </form>
+    </div>
     <div class="mt-20 w-full md:w-2/3 xl:w-1/2">
         <h1 class="font-bold text-2xl">Messages</h1>
         <div class="w-full">
             {% for message in customer_messages %}
             <a href="/dashboard/message/{{message.id}}" class="hover:text-black">
-                <div {% if message.read %} class="border rounded-lg my-4 p-2 " {% else %}
-                    class="border-2 border-blue-500 hover:border transition duration-300 ease-in-out rounded-lg my-4 p-2" {% endif %}>
+                <div {% if message.read %} class="rounded-lg my-4 p-2 border-2 border-slate-900" {% else %}
+                    class="border-2 border-blue-500 hover:border transition duration-300 ease-in-out rounded-lg my-4 p-2"
+                    {% endif %}>
                     <div class="flex justify-between">
                         <p>{{message.name}}</p>
                         <p>{{message.date}}</p>

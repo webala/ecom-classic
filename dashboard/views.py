@@ -68,6 +68,7 @@ class MessagesView(ListView):
     fields = ['name', 'email', 'message', 'date', 'read']
     context_object_name: str = 'customer_messages'
 
+
 class MessageDetailView(DetailView):
     model = Message
     template_name = 'dash/message_detail.html'
@@ -113,3 +114,15 @@ def create_reply(request):
         print('method not allowed')
         return HttpResponseNotAllowed('Method not allowed')
 
+
+def mass_message(request):
+    customers = Customer.objects.all()
+    data = request.POST
+    subject = data.get('subject')
+    body = data.get('body')
+
+    for customer in customers:
+        customer_mail = customer.email
+        send_email(subject, body, customer_mail)
+    
+    return redirect('/dashboard/messages')
