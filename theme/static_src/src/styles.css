@@ -56,14 +56,14 @@
     color: red;
 }
 
-.products {
+.products, .footer {
     position: relative;
     transform: translateY(500px);
     transition: 0.9s ease-in-out;
     
 }
 
-.products.loaded {
+.products.loaded, .footer.loaded {
     transform: translateY(0);  
 }
 

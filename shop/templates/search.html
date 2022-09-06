@@ -4,33 +4,35 @@
 
 <div class="flex flex-col items-center relative">
     {% include 'nav.html' %}
-    
+
     <div class="search relative top-44 w-full flex flex-col">
         <form action="#" method="post" class="w-full flex flex-col items-center">{% csrf_token %}
             <div class="flex items-center px-3 py-1 rounded-lg w-2/3 md:w-1/2">
-                <input name="search_query" type="text" class="w-4/5 border border-stone-900 rounded-lg focus:outline-0"
-                placeholder="Search our store">
-                <button type="submit" class="w-1/5">
+                <input name="search_query" type="text"
+                    class="w-4/5 border rounded-lg focus:outline-0 text-backgroundPrimary"
+                    placeholder="Search our store">
+                <button type="submit" class="rounded-lg mx-2 py-1 px-4 hover:scale-110 transition duration-300 ease-in-out bg-backgroundSecondary text-textPrimary">
                     <i class="uil uil-search "></i>
                 </button>
             </div>
         </form>
 
         {% if products %}
-            <div class="pb-32 grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap mt-16 px-10 sm:px-20 md:px-40 items-center">
+        <div
+            class="pb-32 grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap mt-16 px-10 sm:px-20 md:px-40 items-center">
 
-                {% for product in products %}
-        
-                {% include 'product.html' %}
-                
-                {% endfor %}
-            </div>
+            {% for product in products %}
+
+            {% include 'product.html' %}
+
+            {% endfor %}
+        </div>
         {% endif %}
     </div>
 
-    
-    
-    
+
+
+
 
 </div>
 

@@ -96,6 +96,7 @@ if (backBtn) {
     const navItems = document.querySelector('.nav-items')
     const logo = document.querySelector('.logo')
     const cartItemsList = document.querySelector('.cart-items')
+    const footer = document.querySelector('.footer')
     
 
     navIcon.addEventListener('click', () => {
@@ -115,7 +116,9 @@ if (backBtn) {
         if (quote) {
             quote.classList.add('loaded')
         }
-        
+        if (footer) {
+            footer.classList.add('loaded')
+        }
     }
 
     window.addEventListener('scroll', () => {
