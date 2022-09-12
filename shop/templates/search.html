@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div class="flex flex-col items-center relative">
+<div class="flex flex-col items-center relative min-h-screen">
     {% include 'nav.html' %}
 
     <div class="search relative top-44 w-full flex flex-col">
@@ -10,12 +10,24 @@
             <div class="flex items-center px-3 py-1 rounded-lg w-2/3 md:w-1/2">
                 <input name="search_query" type="text"
                     class="w-4/5 border rounded-lg focus:outline-0 text-backgroundPrimary"
-                    placeholder="Search our store">
+                    placeholder="Search our store"
+                    {% if search_value %}
+                        value="{{search_value}}"
+                    {% endif %}
+                    >
                 <button type="submit" class="rounded-lg mx-2 py-1 px-4 hover:scale-110 transition duration-300 ease-in-out bg-backgroundSecondary text-textPrimary">
                     <i class="uil uil-search "></i>
                 </button>
             </div>
         </form>
+
+        
+        {% if no_products %}
+            <div class="px-10 sm:px-20 md:px-40 my-20">
+                <p>Oops! We cound not find what you are looking for.</p>
+            </div>
+        {% endif %}
+        
 
         {% if products %}
         <div

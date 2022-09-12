@@ -8,6 +8,7 @@ django = "*"
 django-tailwind = "*"
 pillow = "*"
 python-dotenv = "*"
+requests = "*"
 
 [dev-packages]
 

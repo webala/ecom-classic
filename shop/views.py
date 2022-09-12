@@ -226,8 +226,13 @@ def search_view(request):
     if request.method == 'POST':
         query = request.POST['search_query']
         products = list(Product.objects.filter(name__contains=query))
+        no_products = False
+        if not products:
+            no_products = True
         context = {
-           'products': products 
+           'products': products,
+            'no_products': no_products,
+            'search_value': query
         }
         return render(request, 'search.html', context)
     return render(request, 'search.html')
