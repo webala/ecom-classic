@@ -28,7 +28,7 @@
             </div>
         </div>
         {% for item in cart_items %}
-        <div class="cart-item my-10 flex items-center justify-between p-3 w-full border border-backgroundSecondary rounded-lg">
+        <div id="{{item.product.id}}" class="cart-item my-10 flex items-center justify-between p-3 w-full border border-backgroundSecondary rounded-lg">
             <div class="item-img w-1/4 md:w-52">
                 <img src="{{item.product.image_url}}" alt="{{item.product.name}} image">
             </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="flex items-center justify-between  w-1/5 p-2 ">
                 <i class="uil uil-minus update-cart cursor-pointer" data-productId={{item.product.id}} data-action="remove"></i>
-                <p class="">{{item.quantity}}</p>
+                <p id="product-quantity-{{item.product.id}}" class="">{{item.quantity}}</p>
                 <i class="uil uil-plus update-cart cursor-pointer" data-productId={{item.product.id}} data-action="add"></i>
             </div>
             <div>

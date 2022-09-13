@@ -1,14 +1,18 @@
 //Fetch number of cart items and set the value
 const cartItems = document.querySelector('.cart_items')
 const cartItemsEndpoint = '/shop/cart_items'
-fetch(cartItemsEndpoint)
-.then((res) => res.json())
-.then((data) => {
-    const items = data.cart_items
-    cartItems.innerHTML = items.toString()
-})
-.catch((error) => console.log(error))
 
+const getCartItems = () => {
+    fetch(cartItemsEndpoint)
+    .then((res) => res.json())
+    .then((data) => {
+        const items = data.cart_items
+        cartItems.innerHTML = items.toString()
+    })
+    .catch((error) => console.log(error))
+}
+
+getCartItems()
 
 //function to get cookies
 function getCookie(name) {
@@ -37,6 +41,25 @@ if (cart == undefined) {
 
 console.log('cart: ', cart)
 
+const removeElement = (elementId) => {
+    let element = document.getElementById(elementId)
+    if (element) {
+        element.remove()
+    } else {
+        return
+    }
+}
+
+const modifyCartQuantity = (productId, quantity) => {
+    const id = `product-quantity-${productId}`
+    let element = document.getElementById(id)
+    if (element) {
+        element.innerHTML = quantity
+    } else {
+        return
+    }
+}
+
 //modify cart function
 const modifyCartCookie = (action, productId) => {
     // Modifies the cart cookie and updates the value of cart in document.cookie
@@ -48,21 +71,27 @@ const modifyCartCookie = (action, productId) => {
         } else {
             cart[productId]['quantity'] +=1
         }
+        modifyCartQuantity(productId, cart[productId]['quantity'])
     }
     else if (action === 'remove') {
         cart[productId]['quantity'] -= 1
 
         if (cart[productId]['quantity'] <= 0) {
             delete cart[productId]
+            removeElement(productId)
         }
+
+        modifyCartQuantity(productId, cart[productId]['quantity'])
     }
     else if (action === 'delete') {
         delete cart[productId]
+        removeElement(productId)
     }
 
-    console.log('modified cart: ', cart)
+    
     document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/';
-    location.reload()
+    
+    getCartItems()
 }
 
 //get update cart buttons
