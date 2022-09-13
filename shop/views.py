@@ -201,8 +201,9 @@ def confirm_payment(request, request_id):
 def cart_items(request):
     cart_data = get_cart_items(request)
     cart_items = cart_data['order']['cart_items']
-
-    return JsonResponse({'cart_items': cart_items})
+    cart_total = cart_data['order']['cart_total']
+    
+    return JsonResponse({'cart_items': cart_items, 'cart_total': cart_total})
 
 
 def about(request):

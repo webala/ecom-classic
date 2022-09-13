@@ -21,25 +21,25 @@
             </div>
         </form>
 
-        
-        {% if no_products %}
-            <div class="px-10 sm:px-20 md:px-40 my-20">
-                <p>Oops! We cound not find what you are looking for.</p>
+        <div class="mb-44">
+            {% if no_products %}
+                <div class="px-10 sm:px-20 md:px-40 my-20">
+                    <p>Oops! We cound not find what you are looking for.</p>
+                </div>
+            {% endif %}
+            
+
+            {% if products %}
+            <div class="pb-32 grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap mt-16 px-10 sm:px-20 md:px-40 items-center">
+
+                {% for product in products %}
+
+                {% include 'product.html' %}
+
+                {% endfor %}
             </div>
-        {% endif %}
-        
-
-        {% if products %}
-        <div
-            class="pb-32 grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap mt-16 px-10 sm:px-20 md:px-40 items-center">
-
-            {% for product in products %}
-
-            {% include 'product.html' %}
-
-            {% endfor %}
+            {% endif %}
         </div>
-        {% endif %}
     </div>
 
 

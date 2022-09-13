@@ -1,5 +1,6 @@
 //Fetch number of cart items and set the value
 const cartItems = document.querySelector('.cart_items')
+const cartTotal = document.querySelector('.cart_total')
 const cartItemsEndpoint = '/shop/cart_items'
 
 const getCartItems = () => {
@@ -7,7 +8,11 @@ const getCartItems = () => {
     .then((res) => res.json())
     .then((data) => {
         const items = data.cart_items
+        const total = data.cart_total
         cartItems.innerHTML = items.toString()
+        if (cartTotal) {
+            cartTotal.innerHTML = total.toString()
+        }
     })
     .catch((error) => console.log(error))
 }
@@ -151,6 +156,8 @@ if (backBtn) {
     }
 
     window.addEventListener('scroll', () => {
-        products.classList.toggle('loaded', window.scrollY > 0)
+        if (products) {
+            products.classList.toggle('loaded', window.scrollY > 0)
+        }
         // cartItems.classList.toggle('loaded', window.scrollY > 0)
     })
