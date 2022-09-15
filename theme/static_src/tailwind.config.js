@@ -44,10 +44,10 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                backgroundPrimary: '#FCF8E8',
-                backgroundSecondary: '#94B49F',
-                textPrimary: '#76549A',
-                textSecondary: '#DF7861',
+                backgroundPrimary: '#16213E',
+                backgroundSecondary: '#0F3460',
+                textPrimary: '#E94560',
+                textSecondary: '#533483',
                 danger: '#ad0909'
             }
         },
