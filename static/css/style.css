@@ -53,16 +53,16 @@
     color: red;
 }
 
-.products, .footer {
+/* .products {
     position: relative;
-    transform: translateY(500px);
+    transform: translateY(200px);
     transition: 0.9s ease-in-out;
     
-}
+} */
 
-.products.loaded, .footer.loaded {
+/* .products.loaded {
     transform: translateY(0);  
-}
+} */
 
 .dropdown-items {
     visibility: hidden;
@@ -150,10 +150,10 @@
     /* .slide-show {
         transform: translateY(-400px);
     } */
-    .products {
+    /* .products {
        bottom: 400px;
         
-    }
+    } */
     .logo h1 {
         font-size: 50px;
     }
