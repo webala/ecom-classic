@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="w-full product-form flex flex-col items-center text-black">
+    <div class="back flex justify-start items-center cursor-pointer group my-10">
+        <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+        <a href="/dashboard/" class="ml-2 hover:text-black">Back</a>
+    </div>
+    <h1 class="text-2xl  my-10">Create a discount</h1>
+    {% include 'form.html' %}
+</div>
+{% endblock %}

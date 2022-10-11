@@ -2,18 +2,21 @@
 
 
 {% block content %}
-<div class="w-full text-white relative min-h-screen mb-20">
+<div class="w-full text-white relative min-h-screen mb-20  px-10 sm:px-20 md:px-40">
 
+    <div class="w-full flex justify-center flex-wrap">
+        {% for category in categories %}
+        <a href="/shop/category/{{category.name}}" class="hover:text-textSecondary">
+            <div class="w-fit h-20 px-2 md:px-4 xl:px-6 flex items-center bg-backgroundSecondary rounded mx-2 my-4 opacity-80
+                    hover:opacity-100 transition duration-300 ease-out
+                    ">
+                <p class="font-bold text-xl md:text-2xl xl:text-3xl">{{category.name}}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
     <div
-        class="grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap products px-10 sm:px-20 md:px-40 items-center">
-
-        <div class="categories text-textPrimary text-xl mr-44">
-            <ul>
-                <li class="leading-2"><a class="hover:text-textSecondary" href="/shop/products">All</a></li>
-                <li><a class="hover:text-textSecondary" href="/shop/category/T-Shirt">T-Shirts</a></li>
-                <li><a class="hover:text-textSecondary" href="/shop/category/Painting">Paintings</a></li>
-            </ul>
-        </div>
+        class="grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap products items-center">
 
         {% for product in object_list %}
 

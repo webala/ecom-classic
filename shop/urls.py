@@ -17,5 +17,6 @@ urlpatterns = [
     path('contact', MessageCreate.as_view(), name='contact-us'),
     path('search', search_view, name='search'),
     path('', shop, name='shop'),
-    path('category/<str:category_name>', CategoryListView.as_view(), name='product_per_category')
+    path('category/<str:category_name>', CategoryListView.as_view(), name='product_per_category'),
+    path('discount/create', DiscountCreateView.as_view(), name='discount-create')
 ]

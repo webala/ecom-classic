@@ -4,13 +4,14 @@ import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
 from .forms import MessageForm, ShippingAddressForm, CustomerForm
 from shop.models import (
     CartItem,
     Category,
+    Discount,
     Message,
     Order,
     Product,
@@ -23,7 +24,6 @@ from shop.utils import get_cart_items, initiate_stk_push
 
 
 def dashboard(request):
-
     # get latest product entry in database
     latest_product = Product.objects.order_by("-id")[0]
     print("latest_product", latest_product)
@@ -34,10 +34,14 @@ def dashboard(request):
 
 def shop(request):
     # get latest product entry in database
-    latest_product = Product.objects.order_by("-id")[0]
-    best_sellers = Product.objects.order_by("-id")[1:6]
-
-    context = {"latest_product": latest_product, "best_sellers": best_sellers}
+    latest_product = Product.objects.order_by("-id")[1:6]
+    categories = Category.objects.all()
+    discounts = Discount.objects.all()
+    context = {
+        "latest_product": latest_product,
+        "categories": categories,
+        "discounts": discounts,
+    }
 
     return render(request, "shop.html", context)
 
@@ -61,20 +65,38 @@ class ProductListView(ListView):
     template_name: str = "product_per_category.html"
     # context_object_name: str = 'products'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories = Category.objects.all()
+        context["categories"] = categories
+        return context
+
 
 class CategoryListView(ListView):
     template_name: str = "product_per_category.html"
 
     def get_queryset(self):
-
         self.category = get_object_or_404(Category, name=self.kwargs["category_name"])
         return Product.objects.filter(category=self.category)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories = Category.objects.all()
+        context["categories"] = categories
+        return context
 
 
 class ProductDetail(DetailView):
     model = Product
     template_name: str = "product_detail.html"
     context_object_name: str = "product"
+
+
+class DiscountCreateView(CreateView):
+    model = Discount
+    template_name: str = "discount_create.html"
+    fields = ["product", "percentage"]
+    success_url: str = "/shop/discount/create"
 
 
 def cart(request):
@@ -122,7 +144,7 @@ def process_order(request, address_id):
     customer_phone = shipping_address.customer.phone
     data = get_cart_items(request)
     cookie_cart_items = data["cart_items"]
-    print('running ...')
+    print("running ...")
     # populate database with order and cart items from the cookies
     order = Order.objects.create(shipping_address=shipping_address)
     for item in cookie_cart_items:
@@ -133,13 +155,13 @@ def process_order(request, address_id):
         cart_item.save()
 
     if request.method == "POST":
-        print('post req ...')
+        print("post req ...")
         amount = order.cart_total
-        phone = request.POST.get('phone')
-        print('phone: ', phone)
+        phone = request.POST.get("phone")
+        print("phone: ", phone)
         if phone == customer_phone:
             response_data = initiate_stk_push(customer_phone, amount)
-            print('response', response_data)
+            print("response", response_data)
             print(response_data)
             request_id = response_data["chechout_request_id"]
             TransactionDetails.objects.create(request_id=request_id, order=order)
@@ -191,53 +213,54 @@ def mpesa_callback(request):
             # context = {
             #     'transaction': transaction
             # }
-            return HttpResponse('Ok')
+            return HttpResponse("Ok")
+
 
 def confirm_payment(request, request_id):
-    transaction = TransactionDetails.objects.get(request_id = request_id)
+    transaction = TransactionDetails.objects.get(request_id=request_id)
 
-    context = {
-        'transaction': transaction
-    }
-    return render(request, 'confirm_payment.html', context)
+    context = {"transaction": transaction}
+    return render(request, "confirm_payment.html", context)
+
 
 def cart_items(request):
     cart_data = get_cart_items(request)
-    cart_items = cart_data['order']['cart_items']
-    cart_total = cart_data['order']['cart_total']
-    
-    return JsonResponse({'cart_items': cart_items, 'cart_total': cart_total})
+    cart_items = cart_data["order"]["cart_items"]
+    cart_total = cart_data["order"]["cart_total"]
+
+    return JsonResponse({"cart_items": cart_items, "cart_total": cart_total})
 
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, "about.html")
+
 
 class TransactionDetailView(DetailView):
     model = TransactionDetails
     template_name: str = "transaction.html"
     context_object_name: str = "transaction"
 
+
 class MessageCreate(SuccessMessageMixin, CreateView):
     # model = Message
-    template_name: str = 'message_form.html'
+    template_name: str = "message_form.html"
     # fields = ['name', 'email', 'message']
     form_class = MessageForm
-    success_message: str = 'Message sent. We will use your email to get back to you.'
-    success_url: str = '/shop'
-    
+    success_message: str = "Message sent. We will use your email to get back to you."
+    success_url: str = "/shop"
+
 
 def search_view(request):
-    if request.method == 'POST':
-        query = request.POST['search_query']
+    if request.method == "POST":
+        query = request.POST["search_query"]
         products = list(Product.objects.filter(name__contains=query))
         no_products = False
         if not products:
             no_products = True
         context = {
-           'products': products,
-            'no_products': no_products,
-            'search_value': query
+            "products": products,
+            "no_products": no_products,
+            "search_value": query,
         }
-        return render(request, 'search.html', context)
-    return render(request, 'search.html')
-    
+        return render(request, "search.html", context)
+    return render(request, "search.html")

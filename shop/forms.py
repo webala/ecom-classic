@@ -1,6 +1,6 @@
 
 from django import forms
-from .models import Customer, Message, ShippingAddress
+from .models import Customer, Discount, Message, ShippingAddress
 
 class CustomerForm(forms.ModelForm):
     class Meta:
@@ -18,4 +18,10 @@ class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
         fields = ['name', 'email', 'message']
+
+
+class DiscountCreateForm(forms.ModelForm):
+    class Meta:
+        model = Discount
+        fields = ['product', 'percentage']
     

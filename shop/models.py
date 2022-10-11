@@ -20,6 +20,7 @@ class Product(models.Model):
     image = models.ImageField()
     # is_limited = models.BooleanField(default=False)
 
+
     def __str__(self) -> str:
         return self.name
 
@@ -28,10 +29,13 @@ class Product(models.Model):
         return self.image.url
 
 
-# class Rating(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-#     rating = models.IntegerChoices()
+class Discount(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    percentage = models.IntegerField()
 
+    @property
+    def new_price(self):
+        return self.product.price - (self.product.price * self.percentage / 100)
 
 # customer Details
 class Customer(models.Model):
