@@ -946,6 +946,10 @@ select {
   margin-top: 11rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1256,6 +1260,10 @@ select {
 
 .p-5 {
   padding: 1.25rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .py-1 {
