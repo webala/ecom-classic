@@ -26,22 +26,21 @@ SECRET_KEY = "django-insecure-tb9)ii5)-6rtg_y5))!qq5#tx@ey3x-1#48ds!#xqq^7$mtj=y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '4388-41-90-36-160.eu.ngrok.io',
-    'localhost'
-]
+ALLOWED_HOSTS = ["4388-41-90-36-160.eu.ngrok.io", "localhost"]
 
-DEFAULT_PORT = '8080'
+DEFAULT_PORT = "8080"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://c696-105-163-1-221.in.ngrok.io']
-#Safaricom daraja API variables
-DARAJA_AUTH_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+CSRF_TRUSTED_ORIGINS = ["https://c696-105-163-1-221.in.ngrok.io"]
+# Safaricom daraja API variables
+DARAJA_AUTH_URL = (
+    "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+)
 BUSINESS_SHORT_CODE = 174379
-LIPANAMPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
-API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+LIPANAMPESA_PASSKEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
+API_RESOURCE_URL = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 
 
 # Application definition
@@ -53,16 +52,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #third party
+    # third party
     "tailwind",
-    'django_browser_reload',
-    #own
+    "django_browser_reload",
+    # own
     "theme",
     "shop",
-    "dashboard"
+    "dashboard",
+    "users",
 ]
 
-TAILWIND_APP_NAME = 'theme'
+TAILWIND_APP_NAME = "theme"
 
 
 MIDDLEWARE = [
@@ -81,7 +81,7 @@ ROOT_URLCONF = "ecom.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -144,17 +144,15 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-#Where static files (css, js, images) are stored
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+# Where static files (css, js, images) are stored
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
-#url browser uses to access medis
-MEDIA_URL = '/images/'
+# url browser uses to access medis
+MEDIA_URL = "/images/"
 
-#Media storage
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+# Media storage
+MEDIA_ROOT = os.path.join(BASE_DIR, "static/images")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
