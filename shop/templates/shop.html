@@ -3,20 +3,20 @@
 
 {% block content %}
 <div class="shop w-full mb-20 relative h-fit text-textPrimary">
-    
-    {% include 'nav.html' %}
+
+
     <div class="products px-3 md:px-20 flex flex-col items-center h-fit ">
         {% if best_sellers %}
-        
-        <div class="flex flex-col items-center mt-40 text-textPrimary">
-            <h1 class="text-2xl p-10 underline">Best sellers</h1>
-        
+
+        <div class="flex flex-col items-center  text-textPrimary">
+            <h1 class="text-2xl p-10 underline text-textSecondary">Best sellers</h1>
+
             <div
                 class="best-sellers grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap sm:px-20 md:px-40 items-center">
                 {% for product in best_sellers %}
-        
+
                 {% include 'product.html' %}
-        
+
                 {% endfor %}
             </div>
             <a class="mt-10" href="/shop/products">
@@ -49,36 +49,33 @@
             </a>
         </div>
         {% if latest_product %}
-            <div class="flex flex-col items-start text-textPrimary">
+        <div class="flex flex-col items-start text-textPrimary">
 
             <h1 class="text-2xl p-10 underline">New release</h1>
             <div class="latest sm:flex">
                 <div class="md:w-96">
                     <img src="{{latest_product.image_url}}" alt="latest_product" />
                 </div>
-                <div  class="m-4 sm:m-8 flex flex-col justify-between">
+                <div class="m-4 sm:m-8 flex flex-col justify-between">
                     <div>
                         <h1 class="text-2xl">{{latest_product.name}}</h1>
                         <p class="text-xl">ksh {{latest_product.price}}</p>
-                        <hr/>
+                        <hr />
                     </div>
-                    
+
                     <div class="m-2">
-                        <button class="update-cart border-2 flex group py-2 px-4 w-56" data-productId={{latest_product.id}} data-action='add'>
+                        <button class="update-cart border-2 flex group py-2 px-4 w-56"
+                            data-productId={{latest_product.id}} data-action='add'>
                             <p> Add to cart</p>
-                            <i class="uil uil-arrow-right group-hover:translate-x-14 group-hover:visible transform duration-300 ease-in-out ml-2"></i>
+                            <i
+                                class="uil uil-arrow-right group-hover:translate-x-14 group-hover:visible transform duration-300 ease-in-out ml-2"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            </div>
-            {% endif %}
-
-            
-
-            
+        </div>
+        {% endif %}
     </div>
-    
 </div>
-    
+
 {% endblock %}

@@ -122,7 +122,7 @@ def process_order(request, address_id):
     customer_phone = shipping_address.customer.phone
     data = get_cart_items(request)
     cookie_cart_items = data["cart_items"]
-
+    print('running ...')
     # populate database with order and cart items from the cookies
     order = Order.objects.create(shipping_address=shipping_address)
     for item in cookie_cart_items:
@@ -133,10 +133,13 @@ def process_order(request, address_id):
         cart_item.save()
 
     if request.method == "POST":
+        print('post req ...')
         amount = order.cart_total
-        phone = request.POST["phone"]
+        phone = request.POST.get('phone')
+        print('phone: ', phone)
         if phone == customer_phone:
             response_data = initiate_stk_push(customer_phone, amount)
+            print('response', response_data)
             print(response_data)
             request_id = response_data["chechout_request_id"]
             TransactionDetails.objects.create(request_id=request_id, order=order)

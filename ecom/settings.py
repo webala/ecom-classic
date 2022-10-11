@@ -27,11 +27,11 @@ SECRET_KEY = "django-insecure-tb9)ii5)-6rtg_y5))!qq5#tx@ey3x-1#48ds!#xqq^7$mtj=y
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'c696-105-163-1-221.in.ngrok.io',
+    '4388-41-90-36-160.eu.ngrok.io',
     'localhost'
 ]
 
-
+DEFAULT_PORT = '8080'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]

@@ -2,12 +2,8 @@
 
 {% block content %}
 <div class="cart p-2 w-full h-fit min-h-screen">
-    <div class="text-black">
-        {% include 'nav.html' %}
-    </div>
-
     <div class="cart-items relative  md:px-16 xl:px-56 w-full flex flex-col mb-20 items-start">
-    {% if cart_items %}
+        {% if cart_items %}
         <div class="flex pb-10 text-xl">
             <p class="text-textSecondary">Cart</p>
             <i class="uil uil-angle-right"></i>
@@ -22,7 +18,8 @@
             </div>
         </div>
         {% for item in cart_items %}
-        <div id="{{item.product.id}}" class="cart-item mb-10 flex items-center justify-between p-3 w-full h-72 border-b border-backgroundSecondary">
+        <div id="{{item.product.id}}"
+            class="cart-item mb-10 flex items-center justify-between p-3 w-full h-72 border-b border-backgroundSecondary">
             <div class="item-img h-full">
                 <img src="{{item.product.image_url}}" class="h-full" alt="{{item.product.name}} image">
             </div>
@@ -31,12 +28,15 @@
                 <p>ksh {{item.product.price}}</p>
             </div>
             <div class="flex items-center justify-between  w-1/5 p-2 ">
-                <i class="uil uil-minus update-cart cursor-pointer" data-productId={{item.product.id}} data-action="remove"></i>
+                <i class="uil uil-minus update-cart cursor-pointer text-textSecondary text-xl hover:scale-105 transition duration-300 ease-in"
+                    data-productId={{item.product.id}} data-action="remove"></i>
                 <p id="product-quantity-{{item.product.id}}" class="">{{item.quantity}}</p>
-                <i class="uil uil-plus update-cart cursor-pointer" data-productId={{item.product.id}} data-action="add"></i>
+                <i class="uil uil-plus update-cart cursor-pointer text-textSecondary text-xl hover:scale-105 transition duration-300 ease-in"
+                    data-productId={{item.product.id}} data-action="add"></i>
             </div>
             <div>
-                <i class="uil uil-trash-alt update-cart text-2xl text-danger hover:animate-bounce cursor-pointer" data-productId={{item.product.id}} data-action="delete"></i>
+                <i class="uil uil-trash-alt update-cart text-2xl text-danger hover:animate-bounce cursor-pointer hover:scale-105 transition duration-300 ease-in"
+                    data-productId={{item.product.id}} data-action="delete"></i>
             </div>
         </div>
         {% endfor %}
@@ -54,15 +54,16 @@
                 </button>
             </a>
         </div>
-    {% else %}
-    <div class="py-20">
-        <div class="back flex justify-start items-center cursor-pointer group">
-            <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
-            <p class="ml-2">Continue shopping</p>
+        {% else %}
+        <div class="py-20">
+            <div class="back flex justify-start items-center cursor-pointer group">
+                <i
+                    class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
+                <p class="ml-2">Continue shopping</p>
+            </div>
+            <p class="text-2xl">&#128546; No items in your cart</p>
         </div>
-        <p class="text-2xl">&#128546; No items in your cart</p>
-    </div>
-    {% endif %}
+        {% endif %}
     </div>
 </div>
 

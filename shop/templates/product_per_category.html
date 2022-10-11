@@ -2,25 +2,25 @@
 
 
 {% block content %}
-<div class="w-full text-white relative min-h-screen ">
-    {% include 'nav.html' %}
+<div class="w-full text-white relative min-h-screen mb-20">
 
-    <div class="grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap products px-10 sm:px-20 md:px-40 items-center">
-        <div class="m-5 text-black">
-            <div class="categories text-textPrimary">
-                <ul>
-                    <li class="leading-2" ><a class="hover:text-textSecondary" href="/shop/products">All</a></li>
-                    <li><a class="hover:text-textSecondary" href="/shop/category/T-Shirt">T-Shirts</a></li>
-                    <li><a class="hover:text-textSecondary" href="/shop/category/Painting">Paintings</a></li>
-                </ul>
-            </div>
+    <div
+        class="grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-row xl:flex-wrap products px-10 sm:px-20 md:px-40 items-center">
+
+        <div class="categories text-textPrimary text-xl mr-44">
+            <ul>
+                <li class="leading-2"><a class="hover:text-textSecondary" href="/shop/products">All</a></li>
+                <li><a class="hover:text-textSecondary" href="/shop/category/T-Shirt">T-Shirts</a></li>
+                <li><a class="hover:text-textSecondary" href="/shop/category/Painting">Paintings</a></li>
+            </ul>
         </div>
+
         {% for product in object_list %}
-        
+
         {% include 'product.html' %}
-        
+
         {% endfor %}
-        
+
     </div>
 </div>
 

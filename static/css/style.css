@@ -67,6 +67,8 @@
 
 .dropdown-items {
     visibility: hidden;
+    position: relative;
+    /* left: 10px; */
 }
 
 .dropdown:hover .dropdown-items {
@@ -89,7 +91,7 @@
 
 .nav-items.toggle {
     visibility: visible;
-    color: white;
+    color: #F9813A;
 }
 
 .nav-items.toggle ul {
@@ -97,7 +99,7 @@
     justify-content: center;
     align-items: flex-start;
     border-radius: 16px;
-    background-color: rgb(18, 40, 62);
+    background-color: #FCF1F1;
     position: relative;
     right: 40px;
     top: 50px;
