@@ -119,6 +119,7 @@ def checkout(request):
 
     # check if both forms are valid on post request
     if customer_form.is_valid() and shipping_form.is_valid():
+        payment = request.POST.get("payment")
         # save customer object
         customer = customer_form.save()
         # set customer object to customer field for shipping address object
@@ -126,8 +127,21 @@ def checkout(request):
         address.customer = customer
         # save shipping address object
         address.save()
-        # redirect to process order with the shipping address id
-        return redirect("process_order", address_id=address.id)
+
+        # populate database with order and cart items from the cookies
+        order = Order.objects.create(shipping_address=address)
+        for item in cart_items:
+            product_id = item["product"]["id"]
+            product = Product.objects.get(id=product_id)
+            cart_item = CartItem.objects.create(product=product, quantity=item["quantity"])
+            cart_item.cart = order
+            cart_item.save()
+
+        if payment == 'now':
+            # redirect to process order with the shipping address id
+            return redirect("process_order", order_id=order.id)
+        else:
+            pass
 
     context = {
         "cart": order,
@@ -139,26 +153,14 @@ def checkout(request):
     return render(request, "checkout.html", context)
 
 
-def process_order(request, address_id):
-    shipping_address = ShippingAddress.objects.get(id=address_id)
-    customer_phone = shipping_address.customer.phone
-    data = get_cart_items(request)
-    cookie_cart_items = data["cart_items"]
-    print("running ...")
-    # populate database with order and cart items from the cookies
-    order = Order.objects.create(shipping_address=shipping_address)
-    for item in cookie_cart_items:
-        product_id = item["product"]["id"]
-        product = Product.objects.get(id=product_id)
-        cart_item = CartItem.objects.create(product=product, quantity=item["quantity"])
-        cart_item.cart = order
-        cart_item.save()
+def process_order(request, order_id):
+    order = Order.objects.get(id=order_id)
+    customer_phone = order.shipping_address.customer.phone
 
     if request.method == "POST":
         print("post req ...")
         amount = order.cart_total
         phone = request.POST.get("phone")
-        print("phone: ", phone)
         if phone == customer_phone:
             response_data = initiate_stk_push(customer_phone, amount)
             print("response", response_data)
@@ -167,7 +169,7 @@ def process_order(request, address_id):
             TransactionDetails.objects.create(request_id=request_id, order=order)
             return redirect("confirm_payment", request_id=request_id)
         else:
-            customer = shipping_address.customer
+            customer = order.shipping_address.customer
             customer.phone = phone
             customer.save()
             response_data = initiate_stk_push(phone, amount)
@@ -175,6 +177,7 @@ def process_order(request, address_id):
             request_id = response_data["chechout_request_id"]
             TransactionDetails.objects.create(request_id=request_id, order=order)
             return redirect("confirm_payment", request_id=request_id)
+
     context = {"phone": customer_phone}
 
     return render(request, "process_order.html", context)
@@ -209,6 +212,10 @@ def mpesa_callback(request):
             transaction.is_finished = True
             transaction.is_succesful = True
             transaction.save()
+
+            order = transaction.order
+            order.processed = True
+            order.save()
 
             # context = {
             #     'transaction': transaction

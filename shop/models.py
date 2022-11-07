@@ -70,7 +70,7 @@ class ShippingAddress(models.Model):
     house_no = models.CharField(max_length=20)
 
     def __str__(self) -> str:
-        return self.location + " " + self.estate
+        return self.location + " " + self.estate+ " " + self.house_no
 
 
 # This model will translate to cart in the client side

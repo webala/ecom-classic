@@ -9,7 +9,7 @@ urlpatterns = [
     path('product/<pk>', ProductDetail.as_view(), name='product_detail'),
     path('cart', cart, name='cart'),
     path('checkout', checkout, name='checkout'),
-    path('order/process/<int:address_id>', process_order, name='process_order'),
+    path('order/process/<int:order_id>', process_order, name='process_order'),
     path('cart_items', cart_items, name='cart_items'),
     path('callback', mpesa_callback, name='mpesa_callback'),
     path('order/confirm/<request_id>', confirm_payment, name='confirm_payment'),
@@ -18,5 +18,7 @@ urlpatterns = [
     path('search', search_view, name='search'),
     path('', shop, name='shop'),
     path('category/<str:category_name>', CategoryListView.as_view(), name='product_per_category'),
-    path('discount/create', DiscountCreateView.as_view(), name='discount-create')
+    path('discount/create', DiscountCreateView.as_view(), name='discount-create'),
+    
+
 ]

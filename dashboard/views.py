@@ -4,7 +4,7 @@ from django.http import HttpResponseNotAllowed
 from django.views.generic.edit import UpdateView
 from django.views.generic import ListView, DetailView
 from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count, send_email
-from shop.models import Category, Customer, Message, Product, Reply, TransactionDetails
+from shop.models import Order, Category, Customer, Message, Product, Reply, TransactionDetails
 # Create your views here.
 
 
@@ -51,6 +51,12 @@ def delete_product(request, product_id):
     
     return redirect('dash-products')
 
+class OrdersList(ListView):
+    model = Order
+    template_name = 'dash/orders.html'
+    fields = ['date_created', 'processed', 'shipping_address']
+    context_object_name = 'orders'
+    
 class UpdateProduct(UpdateView):
     model = Product
     fields = ['name', 'price', 'category', 'inventory', 'image']

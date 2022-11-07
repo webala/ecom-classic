@@ -44,14 +44,24 @@
                     </div>
                 </div>
                 <div class="flex justify-evenly items-center w-full p-2 sm:px-10">
+                    <div class="flex items-center">
+                        <input checked type="radio" name="payment" value="now">
+                        <label>Pay now</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" name="payment" value="delivery">
+                        <label>Pay on delivery</label>
+                    </div>
+                </div>
+                <div class="flex justify-evenly items-center w-full p-2 sm:px-10">
                     <div class="back flex justify-start items-center cursor-pointer group my-10">
                         <i
                             class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
                         <p class="ml-2 hover:text-textSecondary">Back to cart</p>
                     </div>
-                    <a href="/shop/process_order"><button
-                            class="bg-backgroundSecondary text-textPrimary p-2 rounded-lg hover:text-textSecondary hover:scale-110 transition duration-300 ease-in-out"
-                            type="submit">Proceed to payment</button></a>
+                    <button
+                        class="bg-backgroundSecondary text-textPrimary p-2 rounded-lg hover:text-textSecondary hover:scale-110 transition duration-300 ease-in-out"
+                        type="submit">Continue</button>
                 </div>
             </form>
         </div>
