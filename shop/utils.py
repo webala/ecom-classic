@@ -23,7 +23,12 @@ def get_cart_items(request):
 
     for item in cart_cookie_data:
         product = Product.objects.get(id=item)
-        total = product.price * cart_cookie_data[item]['quantity']
+        if product.has_discount:
+            product_price = product.discount.new_price
+        else:
+            product_price = product.price
+            
+        total = product_price * cart_cookie_data[item]['quantity']
 
         order['cart_items'] += cart_cookie_data[item]['quantity']
         order['cart_total'] += total
@@ -32,7 +37,7 @@ def get_cart_items(request):
             'product': {
                 'id': product.id,
                 'name': product.name,
-                'price': product.price,
+                'price': product_price,
                 'category': product.category.name,
                 'image_url': product.image_url
             },
@@ -46,8 +51,10 @@ def get_cart_items(request):
 
 #Function to generate daraja access token
 def get_access_token():
+    print('get token called')
     consumer_key = os.getenv('CONSUMER_KEY')
     consumer_secret = os.getenv('CONSUMER_SECRET')
+    print('consumer_key', consumer_key, 'consumer_secret', consumer_secret)
     response = requests.get(settings.DARAJA_AUTH_URL, auth = HTTPBasicAuth(consumer_key, consumer_secret))
 
     json_res = response.json()
@@ -71,10 +78,14 @@ def generate_password(dates):
 
 #function to initiate stk push for mpesa payment
 def initiate_stk_push(phone, amount):
+    print('stk push called')
+    
     access_token = get_access_token()
+    print('access token', access_token)
     formated_time = format_date_time()
+    print(' formated_time', formated_time)
     password = generate_password(formated_time)
-
+    print(' password', password)
     headers = {
         'Authorization': 'Bearer %s' % access_token
     }
@@ -88,7 +99,7 @@ def initiate_stk_push(phone, amount):
             "PartyA":phone,    
             "PartyB":"174379",    
             "PhoneNumber":phone,    
-            "CallBackURL":"https://c696-105-163-1-221.in.ngrok.io/shop/callback",    
+            "CallBackURL":"https://abac-41-80-96-106.eu.ngrok.io/shop/callback",    
             "AccountReference":"ECOM CLASSIC",    
             "TransactionDesc":"Make Payment"
         }
@@ -96,7 +107,7 @@ def initiate_stk_push(phone, amount):
     response = requests.post(
         settings.API_RESOURCE_URL, headers=headers, json=payload
     )
-
+    print('response: ', response)
     string_response = response.text
     string_object = json.loads(string_response)
 

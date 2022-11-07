@@ -4,28 +4,40 @@
 {% block content %}
 
 <div class="p-5 md:p-20 flex flex-col items-center  relative min-h-screen">
-    
+
     <div class="flex flex-col items-start">
         <div class="back flex justify-start items-center cursor-pointer group my-10">
             <i class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
             <p class="ml-2 text-xl">Continue shopping</p>
         </div>
         <div class="latest sm:flex ">
-            <div class="md:w-96">
+            <div class="md:w-96 relative">
                 <img src="{{product.image_url}}" alt="product" />
+                {% if product.has_discount %}
+                <div class="absolute top-1/2 left-1/4">
+                    <p class="text-2xl -rotate-45 bg-backgroundSecondary px-2">{{product.discount.percentage}}% off!</p>
+                </div>
+                {% endif %}
             </div>
-            <div  class="m-4 sm:m-8 flex flex-col justify-between">
+            <div class="m-4 sm:m-8 flex flex-col justify-between">
                 <div>
                     <h1 class="text-2xl">{{product.name}}</h1>
-                    <p class="text-xl">ksh {{product.price}}</p>
-                    <hr/>
+                    {% if product.has_discount %}
+                    <p class="line-through">ksh {{product.price}}</p>
+                    <p>ksh {{product.discount.new_price}}</p>
+                    {% else %}
+                    <p>ksh {{product.price}}</p>
+                    {% endif %}
+                    <hr />
                 </div>
-                
+
                 <div class="m-2">
-                    <button class="update-cart border-2 border-black flex justify-between items-center hover:scale-110 transform duration-300 ease-in-out group py-2 px-4 w-56" 
+                    <button
+                        class="update-cart border-2 border-black flex justify-between items-center hover:scale-110 transform duration-300 ease-in-out group py-2 px-4 w-56"
                         data-productId={{product.id}} data-action="add">
                         <p> Add to cart</p>
-                        <i class="text-xl uil uil-plus animate-pulse group-hover:animate-none transform duration-300 ease-in-out ml-2"></i>
+                        <i
+                            class="text-xl uil uil-plus animate-pulse group-hover:animate-none transform duration-300 ease-in-out ml-2"></i>
                     </button>
                 </div>
             </div>

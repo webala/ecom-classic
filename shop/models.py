@@ -27,6 +27,20 @@ class Product(models.Model):
     @property
     def image_url(self):
         return self.image.url
+    
+    @property
+    def has_discount(self):
+        discount = self.discount_set.all()
+        if discount:
+            return True
+        return False
+    
+    @property
+    def discount(self):
+        discount = self.discount_set.all()[0]
+        if discount:
+            return discount
+        return None
 
 
 class Discount(models.Model):

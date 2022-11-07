@@ -749,12 +749,16 @@ select {
   position: relative;
 }
 
-.left-6 {
-  left: 1.5rem;
-}
-
 .right-8 {
   right: 2rem;
+}
+
+.top-1\/2 {
+  top: 50%;
+}
+
+.left-1\/4 {
+  left: 25%;
 }
 
 .bottom-28 {
@@ -777,44 +781,12 @@ select {
   top: 11rem;
 }
 
-.bottom-5 {
-  bottom: 1.25rem;
-}
-
-.left-3 {
-  left: 0.75rem;
-}
-
 .left-10 {
   left: 2.5rem;
 }
 
 .top-20 {
   top: 5rem;
-}
-
-.top-5 {
-  top: 1.25rem;
-}
-
-.top-3 {
-  top: 0.75rem;
-}
-
-.left-1\/2 {
-  left: 50%;
-}
-
-.top-1 {
-  top: 0.25rem;
-}
-
-.top-1\/2 {
-  top: 50%;
-}
-
-.left-1\/4 {
-  left: 25%;
 }
 
 .z-50 {
@@ -950,10 +922,6 @@ select {
   margin-top: 20rem;
 }
 
-.mr-44 {
-  margin-right: 11rem;
-}
-
 .mb-44 {
   margin-bottom: 11rem;
 }
@@ -1012,20 +980,8 @@ select {
   height: 100%;
 }
 
-.h-32 {
-  height: 8rem;
-}
-
-.h-44 {
-  height: 11rem;
-}
-
 .h-20 {
   height: 5rem;
-}
-
-.h-14 {
-  height: 3.5rem;
 }
 
 .min-h-screen {
@@ -1062,21 +1018,12 @@ select {
   width: 80%;
 }
 
-.w-1\/3 {
-  width: 33.333333%;
-}
-
 .w-16 {
   width: 4rem;
 }
 
 .table-auto {
   table-layout: auto;
-}
-
-.rotate-45 {
-  --tw-rotate: 45deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .-rotate-45 {
@@ -1331,6 +1278,11 @@ select {
   padding-right: 2.75rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -1371,11 +1323,6 @@ select {
   padding-right: 0.75rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -1410,11 +1357,6 @@ select {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .font-semibold {
@@ -1487,13 +1429,9 @@ select {
   color: rgb(252 165 165 / var(--tw-text-opacity));
 }
 
-.underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
-}
-
-.opacity-60 {
-  opacity: 0.6;
+.line-through {
+  -webkit-text-decoration-line: line-through;
+          text-decoration-line: line-through;
 }
 
 .opacity-80 {
@@ -1574,11 +1512,6 @@ select {
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-backgroundPrimary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(97 12 99 / var(--tw-bg-opacity));
-}
-
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1597,19 +1530,6 @@ select {
 .hover\:text-red-700:hover {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
-}
-
-.hover\:underline:hover {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
-}
-
-.hover\:opacity-50:hover {
-  opacity: 0.5;
-}
-
-.hover\:opacity-0:hover {
-  opacity: 0;
 }
 
 .hover\:opacity-100:hover {
@@ -1639,12 +1559,6 @@ select {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.group:hover .group-hover\:scale-110 {
-  --tw-scale-x: 1.1;
-  --tw-scale-y: 1.1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .group:hover .group-hover\:animate-none {
   -webkit-animation: none;
           animation: none;
@@ -1652,10 +1566,6 @@ select {
 
 .group:hover .group-hover\:opacity-80 {
   opacity: 0.8;
-}
-
-.group:hover .group-hover\:opacity-50 {
-  opacity: 0.5;
 }
 
 @media (min-width: 640px) {
@@ -1739,10 +1649,6 @@ select {
     width: 50%;
   }
 
-  .md\:w-64 {
-    width: 16rem;
-  }
-
   .md\:w-2\/3 {
     width: 66.666667%;
   }
@@ -1799,14 +1705,14 @@ select {
     padding-right: 10rem;
   }
 
-  .md\:px-20 {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
   .md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .md\:text-xl {
