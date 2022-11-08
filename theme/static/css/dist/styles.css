@@ -777,6 +777,10 @@ select {
   top: 14rem;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .top-44 {
   top: 11rem;
 }
@@ -789,8 +793,20 @@ select {
   top: 5rem;
 }
 
-.top-1\/4 {
-  top: 25%;
+.bottom-3 {
+  bottom: 0.75rem;
+}
+
+.bottom-5 {
+  bottom: 1.25rem;
+}
+
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
+.left-1 {
+  left: 0.25rem;
 }
 
 .z-50 {
@@ -831,6 +847,11 @@ select {
   margin-bottom: 1.25rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .my-20 {
   margin-top: 5rem;
   margin-bottom: 5rem;
@@ -839,11 +860,6 @@ select {
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-}
-
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 .my-10 {
@@ -894,12 +910,16 @@ select {
   margin-bottom: 10rem;
 }
 
-.mb-20 {
-  margin-bottom: 5rem;
-}
-
 .mb-10 {
   margin-bottom: 2.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
 .mr-5 {
@@ -934,10 +954,6 @@ select {
   margin-top: 4rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .mt-44 {
   margin-top: 11rem;
 }
@@ -946,8 +962,12 @@ select {
   margin-top: 0.75rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
+.mt-32 {
+  margin-top: 8rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .block {
@@ -988,12 +1008,16 @@ select {
   height: 100%;
 }
 
+.h-44 {
+  height: 11rem;
+}
+
 .h-20 {
   height: 5rem;
 }
 
-.h-44 {
-  height: 11rem;
+.h-1\/2 {
+  height: 50%;
 }
 
 .min-h-screen {
@@ -1134,6 +1158,14 @@ select {
   flex-wrap: wrap;
 }
 
+.place-content-center {
+  place-content: center;
+}
+
+.content-center {
+  align-content: center;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -1164,6 +1196,10 @@ select {
 
 .justify-evenly {
   justify-content: space-evenly;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .truncate {
@@ -1218,11 +1254,6 @@ select {
 .border-blue-500 {
   --tw-border-opacity: 1;
   border-color: rgb(59 130 246 / var(--tw-border-opacity));
-}
-
-.border-red-600 {
-  --tw-border-opacity: 1;
-  border-color: rgb(220 38 38 / var(--tw-border-opacity));
 }
 
 .bg-backgroundPrimary {
@@ -1285,19 +1316,19 @@ select {
   padding-bottom: 0.25rem;
 }
 
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.px-11 {
-  padding-left: 2.75rem;
-  padding-right: 2.75rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .px-5 {
@@ -1345,9 +1376,9 @@ select {
   padding-right: 1.5rem;
 }
 
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+.px-44 {
+  padding-left: 11rem;
+  padding-right: 11rem;
 }
 
 .pb-64 {
@@ -1371,14 +1402,14 @@ select {
   line-height: 1.75rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-semibold {
@@ -1620,12 +1651,20 @@ select {
     height: 7rem;
   }
 
+  .sm\:h-56 {
+    height: 14rem;
+  }
+
   .sm\:w-64 {
     width: 16rem;
   }
 
   .sm\:w-2\/3 {
     width: 66.666667%;
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:flex-row {
@@ -1640,6 +1679,14 @@ select {
     justify-content: center;
   }
 
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .sm\:gap-2 {
+    gap: 0.5rem;
+  }
+
   .sm\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -1648,6 +1695,11 @@ select {
   .sm\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .sm\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
@@ -1662,6 +1714,10 @@ select {
 
   .md\:flex {
     display: flex;
+  }
+
+  .md\:h-72 {
+    height: 18rem;
   }
 
   .md\:w-72 {
@@ -1700,6 +1756,10 @@ select {
     flex-direction: column;
   }
 
+  .md\:place-content-start {
+    place-content: start;
+  }
+
   .md\:items-start {
     align-items: flex-start;
   }
@@ -1725,6 +1785,11 @@ select {
     padding-right: 4rem;
   }
 
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
   .md\:px-28 {
     padding-left: 7rem;
     padding-right: 7rem;
@@ -1745,9 +1810,9 @@ select {
     padding-right: 1rem;
   }
 
-  .md\:px-20 {
-    padding-left: 5rem;
-    padding-right: 5rem;
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .md\:text-xl {

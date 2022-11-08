@@ -17,16 +17,26 @@ from shop.models import (
     Product,
     ShippingAddress,
     TransactionDetails,
+    Discount
 )
 from shop.utils import get_cart_items, initiate_stk_push
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 
 def home(reqeust):
+    discounts = Discount.objects.all()
+    products = Product.objects.all()
+    categories = Category.objects.all()
+    p = Paginator(products, 15)
+    page = reqeust.GET.get('page')
+    page_obj = p.get_page(page)
 
     context = {
-
+        'discounts': discounts,
+        'page_obj': page_obj,
+        'categories': categories
     }
     
     return render(reqeust, 'home.html', context)

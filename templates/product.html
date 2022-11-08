@@ -1,23 +1,40 @@
-<a href="/shop/product/{{product.id}}" class="text-textPrimary hover:text-black">
-    <div class="hover:scale-105 group relative transition duration-200 ease-in my-20 p-2  h-72 rounded-lg  text-black">
-        <img src="{{product.image_url}}" alt="{{product.name}}-image"
-            class="h-full rounded-none group-hover:opacity-80 transition duration-300 ease-in">
-        {% if product.has_discount %}
-        <div class="absolute top-1/2 left-1/4">
-            <p class="text-2xl -rotate-45 bg-backgroundSecondary px-2">{{product.discount.percentage}}% off!</p>
-        </div>
-        {% endif %}
-        <div class="flex justify-between items-center text-textPrimary">
-            <div class="p-3">
-                <h2 class="font-semibold">{{product.name}}</h2>
-                {% if product.has_discount %}
-                <p class="line-through">ksh {{product.price}}</p>
-                <p>ksh {{product.discount.new_price}}</p>
-                {% else %}
-                <p>ksh {{product.price}}</p>
-                {% endif %}
-                <p class="text-textSecondary">{{product.inventory}} left</p>
-            </div>
-        </div>
+<div
+  class="hover:scale-105 group relative justify-center transition duration-200 ease-in my-20 p-2 h-44 sm:h-56 text-black border-2 border-backgroundSecondary"
+>
+  <a
+    href="/shop/product/{{product.id}}"
+    class="text-textPrimary hover:text-black"
+  >
+    <img
+      src="{{product.image_url}}"
+      alt="{{product.name}}-image"
+      class="h-full rounded-none transition duration-300 ease-in"
+    />
+  </a>
+  {% if product.has_discount %}
+  <div class="absolute top-1/2 left-1/4">
+    <p class="text-2xl -rotate-45 bg-backgroundSecondary px-2">
+      {{product.discount.percentage}}% off!
+    </p>
+  </div>
+  {% endif %}
+  <div class="flex justify-between items-center text-textPrimary">
+    <div class="py-3">
+      <h2 class="font-semibold">{{product.name}}</h2>
+      {% if product.has_discount %}
+      <p class="line-through">ksh {{product.price}}</p>
+      <p>ksh {{product.discount.new_price}}</p>
+      {% else %}
+      <p>ksh {{product.price}}</p>
+      {% endif %}
+      <div class="flex justify-between items-center mt-2">
+        <p class="text-textSecondary">{{product.inventory}} left</p>
+        <i
+          class="fa-solid fa-cart-plus update-cart"
+          data-productId="{{product.id}}"
+          data-action="add"
+        ></i>
+      </div>
     </div>
-</a>
+  </div>
+</div>

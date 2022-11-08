@@ -1,23 +1,23 @@
 <nav
-  class="flex flex-row text-textPrimary justify-between px-2 py-5 items-center"
+  class="flex flex-row text-textPrimary justify-between md:px-20 xl:px-44 py-5 items-center"
 >
-  <div class="logo loaded">
+  <div class="logo loaded px-2 md:px-0">
     <h1 class="text-2xl">Veannes</h1>
   </div>
 
-  <div class="relative">
+  <div class="relative px-2 md:px-0 font-semibold">
     <ul class="nav-items hidden sm:flex">
-      <a href="/shop" class="mr-10 hover:text-textSecondary nav-item">Home</a>
+      <a href="/" class="mr-10 hover:text-textSecondary nav-item">Home</a>
       <a href="/shop/products" class="mr-10 hover:text-textSecondary nav-item">
         Products
       </a>
-      <div class="flex nav-item">
+      <div class="flex nav-item items-center">
         <a href="/shop/search" class="search mr-10 hover:text-textSecondary"
           ><i class="uil uil-search"></i
         ></a>
         <a href="/shop/cart" class="search flex hover:text-textSecondary">
-          <i class="uil uil-shopping-cart"></i>
-          <p class="cart_items text-red-600 text-xs"></p>
+          <i class="fa-solid fa-cart-shopping"></i>
+          <p class="cart_items text-red-600 text-xs relative bottom-1 left-1"></p>
         </a>
       </div>
     </ul>
@@ -26,8 +26,8 @@
         ><i class="uil uil-search"></i
       ></a>
       <a href="/shop/cart" class="search flex hover:text-textSecondary mx-2">
-        <i class="uil uil-shopping-cart"></i>
-        <p class="cart_items text-red-600 text-xs"></p>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <p class="cart_items text-red-600 text-xs relative bottom-1 left-1"></p>
       </a>
       <i class="uil uil-bars mx-2" id="nav-icon"></i>
     </div>
