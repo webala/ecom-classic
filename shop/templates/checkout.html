@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="">
+<div class="mb-20">
     <div class="p-10 flex md:px-16 xl:px-56">
         <p>Cart</p>
         <i class="uil uil-angle-right"></i>
@@ -18,9 +18,9 @@
                 {% csrf_token %}
                 <div class="md:flex md:w-full justify-center md:items-start xl:w-1/2">
                     <div class="m-5">
-                        <h1 class="text-textSecondary">Contact info</h1>
+                        <h1 class="text-textSecondary font-bold">Contact info</h1>
                         {% for field in customer_form %}
-                        <div class="field flex flex-col text-textPrimary text-xl my-2">
+                        <div class="field flex flex-col text-textPrimary my-2">
                             {{ field.errors }}
                             {{ field.label_tag }} {{ field }}
                             {% if field.help_text %}
@@ -31,9 +31,9 @@
                     </div>
 
                     <div class="m-5">
-                        <h1 class="text-textSecondary">Shipping Address</h1>
+                        <h1 class="text-textSecondary font-bold">Shipping Information</h1>
                         {% for field in shipping_form %}
-                        <div class="field flex flex-col text-textPrimary text-xl my-2">
+                        <div class="field flex flex-col text-textPrimary my-2">
                             {{ field.errors }}
                             {{ field.label_tag }} {{ field }}
                             {% if field.help_text %}
@@ -65,12 +65,12 @@
                 </div>
             </form>
         </div>
-        <div class="cart-summary xl:w-1/2 sm:w-2/3 p-5 xl:border-l">
-            <h1 class="text-textSecondary mb-5">Cart summary</h1>
-            <div class="flex xl:flex-col justify-center">
+        <div class="cart-summary xl:w-1/2 sm:w-2/3 p-5 xl:border-l border-backgroundSecondary">
+            <h1 class="text-textSecondary mb-5 font-bold">Cart summary</h1>
+            <div class="flex flex-col justify-center items-center">
                 {% for item in cart_items %}
                 <div
-                    class="cart-item flex items-center xl:my-2 justify-evenly p-3 w-full border border-backgroundSecondary rounded-lg xl:border-none">
+                    class="cart-item flex items-center my-2 justify-evenly p-3 w-full border-2 border-backgroundSecondary rounded-lg">
                     <div class="item-img w-1/5 md:w-28">
                         <img src="{{item.product.image_url}}" alt="{{item.product.name}} image">
                     </div>
