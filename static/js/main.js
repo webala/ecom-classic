@@ -133,9 +133,7 @@ if (backBtn) {
     const footer = document.querySelector('.footer')
     
 
-    navIcon.addEventListener('click', () => {
-        navItems.classList.toggle('toggle')
-    })
+    
 
     window.onload = () => {
         if (cartItemsList) {
@@ -160,4 +158,32 @@ if (backBtn) {
             products.classList.toggle('loaded', window.scrollY > 0)
         }
         // cartItems.classList.toggle('loaded', window.scrollY > 0)
+    })
+
+    const individualNavItems = Array.from(document.getElementsByClassName('nav-item'))
+
+    //Navigation toggle
+
+
+    navIcon.addEventListener('click', () => {
+
+        const navToggleClasses = [
+            'absolute',
+            'toggle',
+            'right-0',
+            'px-10',
+            'py-5',
+            'hidden',
+            'flex',
+            'flex-col', 
+            'bg-backgroundSecondary'
+        ]
+
+        navToggleClasses.forEach(className => {
+            navItems.classList.toggle(className)
+        })
+
+        individualNavItems.forEach(item => {
+            item.classList.toggle('my-2')
+        })
     })

@@ -1,27 +1,67 @@
 <nav
-    class="nav z-10  flex flex-row py-20 px-11 md:px-16 xl:px-64  justify-between w-full text-xl xl:text-2xl text-textPrimary">
-    <div class="logo">
-        <h1>Veannes</h1>
-    </div>
-    <div class="nav-items">
-        <ul class="flex justify-between">
-            <a href="/shop" class="mr-10 hover:text-textSecondary">Home</a>
-            <a href="/shop/products" class="mr-10 hover:text-textSecondary">
-                Products
-            </a>
-            <a href="/shop/search" class="search mr-10 hover:text-textSecondary"><i class="uil uil-search"></i></a>
-            <a href="/shop/cart" class="search flex hover:text-textSecondary">
-                <i class="uil uil-shopping-cart"></i>
-                <p class="cart_items text-red-600 text-xs"></p>
-            </a>
-        </ul>
-    </div>
-    <div class="nav-icon absolute right-8 ">
-        <i class="uil uil-bars" id="nav-icon"></i>
-        <a href="/shop/search" class="hover:text-textSecondary"><i class="uil uil-search"></i></a>
-        <a href="/shop/cart" class="hover:text-textSecondary">
-            <i class="uil uil-shopping-cart"></i>
-            <p class="cart_items text-red-600"></p>
+  class="flex flex-row text-textPrimary justify-between px-2 py-5 items-center"
+>
+  <div class="logo loaded">
+    <h1 class="text-2xl">Veannes</h1>
+  </div>
+
+  <div class="relative">
+    <ul class="nav-items hidden sm:flex">
+      <a href="/shop" class="mr-10 hover:text-textSecondary nav-item">Home</a>
+      <a href="/shop/products" class="mr-10 hover:text-textSecondary nav-item">
+        Products
+      </a>
+      <div class="flex nav-item">
+        <a href="/shop/search" class="search mr-10 hover:text-textSecondary"
+          ><i class="uil uil-search"></i
+        ></a>
+        <a href="/shop/cart" class="search flex hover:text-textSecondary">
+          <i class="uil uil-shopping-cart"></i>
+          <p class="cart_items text-red-600 text-xs"></p>
         </a>
+      </div>
+    </ul>
+    <div class="nav-icons flex sm:hidden">
+      <a href="/shop/search" class="hover:text-textSecondary mx-2"
+        ><i class="uil uil-search"></i
+      ></a>
+      <a href="/shop/cart" class="search flex hover:text-textSecondary mx-2">
+        <i class="uil uil-shopping-cart"></i>
+        <p class="cart_items text-red-600 text-xs"></p>
+      </a>
+      <i class="uil uil-bars mx-2" id="nav-icon"></i>
     </div>
+  </div>
 </nav>
+<!-- <nav
+  class="nav relative z-10 flex flex-row py-20 px-2 md:px-16 xl:px-64 justify-between items-center w-full text-xl xl:text-2xl text-textPrimary"
+>
+  <div class="logo flex items-center">
+    <h1 class="text-2xl">Veannes</h1>
+  </div>
+  <div class="nav-items">
+    <ul class="flex justify-between">
+      <a href="/shop" class="mr-10 hover:text-textSecondary">Home</a>
+      <a href="/shop/products" class="mr-10 hover:text-textSecondary">
+        Products
+      </a>
+      <a href="/shop/search" class="search mr-10 hover:text-textSecondary"
+        ><i class="uil uil-search"></i
+      ></a>
+      <a href="/shop/cart" class="search flex hover:text-textSecondary">
+        <i class="uil uil-shopping-cart"></i>
+        <p class="cart_items text-red-600 text-xs"></p>
+      </a>
+    </ul>
+  </div>
+  <div class="nav-icon absolute right-8">
+    <i class="uil uil-bars" id="nav-icon"></i>
+    <a href="/shop/search" class="hover:text-textSecondary"
+      ><i class="uil uil-search"></i
+    ></a>
+    <a href="/shop/cart" class="hover:text-textSecondary">
+      <i class="uil uil-shopping-cart"></i>
+      <p class="cart_items text-red-600"></p>
+    </a>
+  </div>
+</nav> -->

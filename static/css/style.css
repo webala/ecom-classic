@@ -7,7 +7,6 @@
 
 .logo h1 {
     font-family: 'Pacifico', cursive;
-    font-size: 30px;
 }
 .logo {
     transform: translateX(-500px);
@@ -75,43 +74,7 @@
     visibility: visible;
 }
 
-.nav-items {
-    visibility: hidden;
-    transform: translateY(-200px);
-}
 
-.nav-items.loaded {
-    transform: translateX(0);
-    transition: 0.9s ease-in-out;
-}
-
-.nav-icon {
-    visibility: visible;
-}
-
-.nav-items.toggle {
-    visibility: visible;
-    color: #F9813A;
-}
-
-.nav-items.toggle ul {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    border-radius: 16px;
-    background-color: #FCF1F1;
-    position: relative;
-    right: 40px;
-    top: 50px;
-    padding: 10px;
-}
-.nav-items.toggle ul a, .nav-items.toggle ul div {
-    margin: 0 0;
-    top:0;
-}
-.nav-items.toggle ul .search {
-    visibility: hidden;
-}
 
 /* .slide-show {
     /* transform: translateY(-700px); */
@@ -129,14 +92,15 @@
     transform: translateY(0);
 } */
 
-@media screen and (min-width: 640px) {
-    .nav-items {
-        visibility: visible;
-    }
+.nav-items.toggle {
+    top: 100%;
+    height: 100vh;
+}
 
-    .nav-icon {
-        visibility: hidden;
-    }
+@media screen and (min-width: 640px) {
+    
+
+
     .quote {
         font-size:30px;
     }

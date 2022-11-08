@@ -23,13 +23,13 @@ from shop.utils import get_cart_items, initiate_stk_push
 # Create your views here.
 
 
-def dashboard(request):
-    # get latest product entry in database
-    latest_product = Product.objects.order_by("-id")[0]
-    print("latest_product", latest_product)
-    context = {"latest_product": latest_product}
+def home(reqeust):
 
-    return render(request, "dashboard.html", context)
+    context = {
+
+    }
+    
+    return render(reqeust, 'home.html', context)
 
 
 def shop(request):

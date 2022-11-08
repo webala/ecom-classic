@@ -789,6 +789,10 @@ select {
   top: 5rem;
 }
 
+.top-1\/4 {
+  top: 25%;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -1341,6 +1345,11 @@ select {
   padding-right: 1.5rem;
 }
 
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 .pb-64 {
   padding-bottom: 16rem;
 }
@@ -1601,6 +1610,10 @@ select {
 
   .sm\:flex {
     display: flex;
+  }
+
+  .sm\:hidden {
+    display: none;
   }
 
   .sm\:h-28 {
