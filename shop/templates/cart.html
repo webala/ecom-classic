@@ -1,71 +1,101 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="cart p-2 w-full h-fit min-h-screen">
-    <div class="cart-items relative  md:px-16 xl:px-56 w-full flex flex-col mb-20 items-start">
-        {% if cart_items %}
-        <div class="flex pb-10 text-xl">
-            <p class="text-textSecondary">Cart</p>
-            <i class="uil uil-angle-right"></i>
-            <p>Checkout</p>
-            <i class="uil uil-angle-right"></i>
-            <p>Payment</p>
-        </div>
-        <div class="flex justify-start w-full  mb-10">
-            <div class="text-xl flex flex-col items-start border-b border-backgroundSecondary">
-                <p>Items: <span class="cart_items"> {{cart.cart_items}}</span></p>
-                <p>Cart Total: <span class="cart_total"> {{cart.cart_total}} </span></p>
-            </div>
-        </div>
-        {% for item in cart_items %}
-        <div id="{{item.product.id}}"
-            class="cart-item mb-10 flex items-center justify-between p-3 w-full h-72 border-b border-backgroundSecondary">
-            <div class="item-img h-full">
-                <img src="{{item.product.image_url}}" class="h-full" alt="{{item.product.name}} image">
-            </div>
-            <div>
-                <h1 class="font-medium text-xl">{{item.product.name}}</h1>
-                <p>ksh {{item.product.price}}</p>
-            </div>
-            <div class="flex items-center justify-between  w-1/5 p-2 ">
-                <i class="uil uil-minus update-cart cursor-pointer text-textSecondary text-xl hover:scale-105 transition duration-300 ease-in"
-                    data-productId={{item.product.id}} data-action="remove"></i>
-                <p id="product-quantity-{{item.product.id}}" class="">{{item.quantity}}</p>
-                <i class="uil uil-plus update-cart cursor-pointer text-textSecondary text-xl hover:scale-105 transition duration-300 ease-in"
-                    data-productId={{item.product.id}} data-action="add"></i>
-            </div>
-            <div>
-                <i class="uil uil-trash-alt update-cart text-2xl text-danger hover:animate-bounce cursor-pointer hover:scale-105 transition duration-300 ease-in"
-                    data-productId={{item.product.id}} data-action="delete"></i>
-            </div>
-        </div>
-        {% endfor %}
-        <div class="group flex justify-end">
-            <a href="/shop/checkout" class="text-textPrimary hover:text-textSecondary">
-                <button class="flex justify-between border border-backgroundSecondary px-4 py-2 mr-5 rounded-lg w-fit">
-                    <p class="mr-3">Continue shopping</p>
-                </button>
-            </a>
-
-            <a href="/shop/checkout" class="text-textPrimary hover:text-textSecondary">
-                <button class="flex justify-start bg-textSecondary text-backgroundSecondary px-4 py-2 rounded-lg w-fit">
-                    <p class="mr-3">Checkout</p>
-                    <i class="uil uil-arrow-right group-hover:translate-x-4 transition duration-300 ease-in-out"></i>
-                </button>
-            </a>
-        </div>
-        {% else %}
-        <div class="py-20">
-            <div class="back flex justify-start items-center cursor-pointer group">
-                <i
-                    class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"></i>
-                <p class="ml-2">Continue shopping</p>
-            </div>
-            <p class="text-2xl">&#128546; No items in your cart</p>
-        </div>
-        {% endif %}
+  <div
+    class="cart-items relative md:px-16 xl:px-56 w-full flex flex-col mb-20 items-start"
+  >
+    {% if cart_items %}
+    <div class="flex pb-10 text-xl">
+      <p class="text-textSecondary">Cart</p>
+      <i class="uil uil-angle-right"></i>
+      <p>Checkout</p>
+      <i class="uil uil-angle-right"></i>
+      <p>Payment</p>
     </div>
-</div>
+    <div class="flex justify-start w-full mb-10">
+      <div
+        class="text-xl flex flex-col items-start border-b border-backgroundSecondary"
+      >
+        <p>Items: <span class="cart_items"> {{cart.cart_items}}</span></p>
+        <p>Cart Total: <span class="cart_total"> {{cart.cart_total}} </span></p>
+      </div>
+    </div>
+    {% for item in cart_items %}
+    <div
+      id="{{item.product.id}}"
+      class="cart-item mb-10 flex flex-col md:flex-row items-center justify-evenly p-3 w-full h-72 border-b border-backgroundSecondary"
+    >
+      <div class="flex justify-between items-center w-full md:w-1/2">
+        <div class="item-img w-1/4 md:w-44">
+          <img
+            src="{{item.product.image_url}}"
+            class="w-full"
+            alt="{{item.product.name}} image"
+          />
+        </div>
+        <div>
+          <h1 class="font-medium md:text-xl">{{item.product.name}}</h1>
+          <p>ksh {{item.product.price}}</p>
+        </div>
+      </div>
+      <div class="flex justify-evenly items-center w-full md:w-1/2 md:mx-5">
+        <div class="flex items-center justify-evenly p-2">
+          <i
+            class="fa-regular fa-square-plus update-cart cursor-pointer text-textSecondary text-xl hover:scale-125 transition duration-100 ease-in mx-2"
+            data-productId="{{item.product.id}}"
+            data-action="remove"
+          ></i>
+          <p id="product-quantity-{{item.product.id}}" class="mx-2">
+            {{item.quantity}}
+          </p>
+          <i
+            class="fa-regular fa-square-minus update-cart cursor-pointer text-textSecondary text-xl hover:scale-125 transition duration-100 ease-in mx-2"
+            data-productId="{{item.product.id}}"
+            data-action="add"
+          ></i>
+        </div>
+        <div>
+          <i
+            class="fa-solid fa-trash update-cart text-2xl text-danger hover:animate-bounce cursor-pointer hover:scale-125 transition duration-100 ease-in"
+            data-productId="{{item.product.id}}"
+            data-action="delete"
+          ></i>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="flex justify-end">
+      <button
+        class="flex justify-between border border-backgroundSecondary px-4 py-2 mr-5 rounded-lg w-fit back"
+      >
+        <p class="mr-3">Continue shopping</p>
+      </button>
 
+      <a
+        href="/shop/checkout"
+        class="text-textPrimary hover:text-textSecondary"
+      >
+        <button
+          class="flex justify-start bg-textSecondary text-backgroundSecondary px-4 py-2 rounded-lg w-fit group"
+        >
+          <p class="mr-3">Checkout</p>
+          <i
+            class="uil uil-arrow-right group-hover:translate-x-4 transition duration-300 ease-in-out"
+          ></i>
+        </button>
+      </a>
+    </div>
+    {% else %}
+    <div class="py-20">
+      <div class="back flex justify-start items-center cursor-pointer group">
+        <i
+          class="uil uil-arrow-left text-2xl group-hover:-translate-x-10 transition duration-300 ease-in-out"
+        ></i>
+        <p class="ml-2">Continue shopping</p>
+      </div>
+      <p class="text-2xl">&#128546; No items in your cart</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
 
 {% endblock %}
