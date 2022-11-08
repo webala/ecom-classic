@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<div class="flex flex-col items-center min-h-screen">
+  <div class="flex flex-col items-start">
+    <div class="mb-10">
+      <h1 class="text-xl mb-2 underline">Shipping information</h1>
+      <div>
+        <p>Recipient: {{order.shipping_address.customer}}</p>
+        <p>Location: {{order.shipping_address.location}}</p>
+        <p>Estate: {{order.shipping_address.estate}}</p>
+        <p>House No: {{order.shipping_address.house_no}}</p>
+        <p>You will be required to pay ksh {{order.total_cost}}</p>
+      </div>
+    </div>
+
+    <div>
+      <h1 class="mb-5 text-xl underline">Order items</h1>
+
+      <div class="flex flex-col">
+        {% for item in cart_items %}
+        <div
+          id="{{item.product.id}}"
+          class="cart-item flex flex-col sm:flex-row items-start sm:items-center justify-center w-full h-44"
+        >
+          <div class="item-img h-full">
+            <img
+              src="{{item.product.image_url}}"
+              class="h-full"
+              alt="{{item.product.name}} image"
+            />
+          </div>
+          <div class="sm:ml-10">
+            <h1 class="font-medium text-xl">{{item.product.name}}</h1>
+            <p>ksh {{item.product.price}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

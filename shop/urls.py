@@ -19,6 +19,6 @@ urlpatterns = [
     path('', shop, name='shop'),
     path('category/<str:category_name>', CategoryListView.as_view(), name='product_per_category'),
     path('discount/create', DiscountCreateView.as_view(), name='discount-create'),
-    
+    path('book-success/<int:order_id>', book_success, name='book-success')
 
 ]

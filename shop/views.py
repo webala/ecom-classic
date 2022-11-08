@@ -141,7 +141,7 @@ def checkout(request):
             # redirect to process order with the shipping address id
             return redirect("process_order", order_id=order.id)
         else:
-            pass
+            return redirect('book-success', order_id=order.id)
 
     context = {
         "cart": order,
@@ -151,6 +151,16 @@ def checkout(request):
     }
 
     return render(request, "checkout.html", context)
+
+def book_success(request, order_id):
+    order = Order.objects.get(id=order_id)
+    cart_items = order.cartitem_set.all()
+
+    context = {
+      'order': order,
+      'cart_items': cart_items  
+    }
+    return render(request, 'book_success.html', context)
 
 
 def process_order(request, order_id):
