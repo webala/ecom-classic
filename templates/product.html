@@ -1,16 +1,13 @@
 <div
   class="hover:scale-105 group relative justify-center transition duration-200 ease-in my-20 p-2 h-44 sm:h-56 text-black border-2 border-backgroundSecondary"
 >
-  <a
-    href="/shop/product/{{product.id}}"
-    class="text-textPrimary hover:text-black"
-  >
+ 
     <img
       src="{{product.image_url}}"
       alt="{{product.name}}-image"
       class="h-full rounded-none transition duration-300 ease-in"
     />
-  </a>
+  
   {% if product.has_discount %}
   <div class="absolute top-1/2 left-1/4">
     <p class="text-2xl -rotate-45 bg-backgroundSecondary px-2">

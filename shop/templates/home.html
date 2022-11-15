@@ -13,16 +13,13 @@
       <div
         class="hover:scale-105 group transition duration-200 ease-in my-20 p-2 relative h-44 sm:h-56 text-black border-2 border-backgroundSecondary"
       >
-        <a
-          href="/shop/product/{{discount.product.id}}"
-          class="text-textPrimary hover:text-black"
-        >
+        
           <img
             src="{{discount.product.image_url}}"
             alt="{{discount.product.name}}-image"
             class="h-full rounded-none group-hover:opacity-80 transition duration-300 ease-in"
           />
-        </a>
+        
         <div class="absolute top-1/2 left-0">
           <p class="text-2xl -rotate-45 bg-backgroundSecondary px-2">
             {{discount.percentage}}% off!
@@ -53,6 +50,7 @@
   {% endif %}
 
   <div class="my-32">
+    <h1 class="px-2 text-xl font-bold">Free delivery within Nairobi CBD!</h1>
     <div
       class="grid grid-cols-2 sm:grid-cols-3 place-content-center md:place-content-start items-center gap-2 md:flex flex-row flex-wrap"
     >
@@ -70,9 +68,9 @@
         class="hover:text-textSecondary"
       >
         <div
-          class="w-fit my-10 h-20 px-2 md:px-4 xl:px-6 flex items-center bg-backgroundSecondary rounded mx-2 opacity-80 hover:opacity-100 transition duration-300 ease-out"
+          class="w-fit my-10 py-2 px-2 md:px-4 xl:px-6 flex items-center bg-backgroundSecondary rounded mx-2 opacity-80 hover:opacity-100 hover:scale-110 transition duration-300 ease-out"
         >
-          <p class="font-bold text-xl md:text-2xl xl:text-3xl">
+          <p class="font-bold text-xl md:text-2xl ">
             {{category.name}}
           </p>
         </div>

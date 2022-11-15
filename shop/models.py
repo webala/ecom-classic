@@ -17,16 +17,15 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     inventory = models.IntegerField()
-    image = models.ImageField()
+    image_filename = models.CharField(max_length=20)
+    image_url = models.CharField(max_length=1000)
     # is_limited = models.BooleanField(default=False)
 
 
     def __str__(self) -> str:
         return self.name
 
-    @property
-    def image_url(self):
-        return self.image.url
+    
     
     @property
     def has_discount(self):
@@ -66,8 +65,8 @@ class Customer(models.Model):
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     location = models.CharField(max_length=20)
-    estate = models.CharField(max_length=20)
-    house_no = models.CharField(max_length=20)
+    estate = models.CharField(max_length=20, blank=True, null=True)
+    house_no = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.location + " " + self.estate+ " " + self.house_no

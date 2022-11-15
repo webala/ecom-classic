@@ -1,10 +1,15 @@
 import json
 import os
+import pyrebase
+import secrets
+from PIL import Image
+from io import BytesIO
 from urllib import response
 from .models import Product
 import requests
 from requests.auth import HTTPBasicAuth
 from django.conf import settings
+from django.core.files import File
 from datetime import datetime
 import base64
 from dotenv import load_dotenv
@@ -123,3 +128,46 @@ def initiate_stk_push(phone, amount):
                 'customer_meaasge' :string_object['CustomerMessage'],
             }
     return data
+
+#firebase configuration
+firebase_config = {
+  'apiKey': "AIzaSyBlUL0zRZOWZ3bT-5N2QPUjm5sG08luiZw",
+  'authDomain': "ecom-classic.firebaseapp.com",
+  'projectId': "ecom-classic",
+  'storageBucket': "ecom-classic.appspot.com",
+  'messagingSenderId': "690560719255",
+  'appId': "1:690560719255:web:d1e5f7b1dce3eb22c24cd2",
+  'measurementId': "G-H6MJJKY3YE",
+   "databaseURL": "",
+}
+
+firebase = pyrebase.initialize_app(firebase_config)
+storage = firebase.storage()
+
+auth = firebase.auth
+email = os.getenv('FIREBASE_EMAIL')
+password = os.getenv("FIREBASE_PASSWORD")
+
+
+#Compress the image file
+def compress_image(image, ):
+    im = Image.open(image)
+    im_io = BytesIO()
+    im.save(im_io, "JPEG", quality=60)
+    new_image = File(im_io, name=image.name)
+    return new_image
+
+def upload_product_image(file):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(file.name)
+    filename = random_hex + f_ext
+    file.name = filename
+    image = compress_image(file)
+    directory = f'products/{filename}'
+    storage.child(directory).put(image)
+    return filename
+
+def get_image_url(filename, user):
+    path = f'products/{filename}'
+    url = storage.child(path).get_url(user["idToken"])
+    return url

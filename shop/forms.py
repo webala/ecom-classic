@@ -1,6 +1,6 @@
 
 from django import forms
-from .models import Customer, Discount, Message, ShippingAddress
+from .models import Customer, Discount, Message, ShippingAddress, Product
 
 class CustomerForm(forms.ModelForm):
     class Meta:
@@ -25,3 +25,9 @@ class DiscountCreateForm(forms.ModelForm):
         model = Discount
         fields = ['product', 'percentage']
     
+class ProductCreateForm(forms.ModelForm):
+    image = forms.FileField()
+    
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'category', 'inventory', 'image']

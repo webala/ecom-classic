@@ -9,6 +9,7 @@ django-tailwind = "*"
 pillow = "*"
 python-dotenv = "*"
 requests = "*"
+pyrebase4 = "*"
 
 [dev-packages]
 

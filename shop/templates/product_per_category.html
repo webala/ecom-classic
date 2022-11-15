@@ -7,11 +7,13 @@
     <div class="w-full flex justify-center flex-wrap">
         {% for category in categories %}
         <a href="/shop/category/{{category.name}}" class="hover:text-textSecondary">
-            <div class="w-fit h-20 px-2 md:px-4 xl:px-6 flex items-center bg-backgroundSecondary rounded mx-2 my-4 opacity-80
-                    hover:opacity-100 transition duration-300 ease-out
-                    ">
-                <p class="font-bold text-xl md:text-2xl xl:text-3xl">{{category.name}}</p>
-            </div>
+            <div
+            class="w-fit my-10 py-2 px-2 md:px-4 xl:px-6 flex items-center bg-backgroundSecondary rounded mx-2 opacity-80 hover:opacity-100 hover:scale-110 transition duration-300 ease-out"
+          >
+            <p class="font-bold text-xl md:text-2xl ">
+              {{category.name}}
+            </p>
+          </div>
         </a>
         {% endfor %}
     </div>

@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.http import HttpResponse, JsonResponse
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView, DetailView
-from .forms import MessageForm, ShippingAddressForm, CustomerForm
+from .forms import MessageForm, ShippingAddressForm, CustomerForm, ProductCreateForm
 from shop.models import (
     CartItem,
     Category,
@@ -19,7 +19,7 @@ from shop.models import (
     TransactionDetails,
     Discount
 )
-from shop.utils import get_cart_items, initiate_stk_push
+from shop.utils import get_cart_items, initiate_stk_push, auth, email, password, get_image_url, upload_product_image
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -65,9 +65,28 @@ class CategoryCreate(CreateView):
 
 class ProductCreate(CreateView):
     model = Product
-    fields = ["category", "name", "price", "inventory", "image"]
+    # fields = ["category", "name", "price", "inventory"]
     template_name: str = "product_form.html"
-    success_url = "/shop/product/add"
+    # success_url = "/shop/product/add"
+    form_class = ProductCreateForm
+
+    def post(self, request, *args: str, **kwargs):
+        product_create_form = ProductCreateForm(request.POST, request.FILES)
+        if product_create_form.is_valid():
+            image = request.FILES.get('image')
+            product = product_create_form.save(commit=False)
+            print(image)
+            # image = product.image
+            filename = upload_product_image(image)
+
+            user = auth.sign_in_with_email_and_password(email, password)
+            print('email', email, password)
+            image_url = get_image_url(filename, user)
+
+            product.image_url = image_url
+            product.save()
+            return redirect('product_create')
+        
 
 
 class ProductListView(ListView):
@@ -170,6 +189,7 @@ def book_success(request, order_id):
       'order': order,
       'cart_items': cart_items  
     }
+    
     return render(request, 'book_success.html', context)
 
 
@@ -245,8 +265,9 @@ def mpesa_callback(request):
 
 def confirm_payment(request, request_id):
     transaction = TransactionDetails.objects.get(request_id=request_id)
-
-    context = {"transaction": transaction}
+    order = transaction.order
+    order_items = order.cartitem_set.all()
+    context = {"transaction": transaction, 'order_items': order_items}
     return render(request, "confirm_payment.html", context)
 
 
@@ -280,14 +301,15 @@ class MessageCreate(SuccessMessageMixin, CreateView):
 def search_view(request):
     if request.method == "POST":
         query = request.POST["search_query"]
-        products = list(Product.objects.filter(name__contains=query))
-        no_products = False
-        if not products:
-            no_products = True
+        products = Product.objects.filter(name__contains=query)
+        category = Category.objects.filter(name__contains=query).first()
+        print(category)
+        category_products = Product.objects.filter(category=category)
+        
         context = {
             "products": products,
-            "no_products": no_products,
             "search_value": query,
+            "category_products": category_products
         }
         return render(request, "search.html", context)
     return render(request, "search.html")

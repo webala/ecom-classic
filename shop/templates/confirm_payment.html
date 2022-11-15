@@ -1,18 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="flex justify-center items-start min-h-screen">
+<div class="flex justify-center items-start md:my-32 xl:my-56">
    
     {% if transaction and transaction.is_finished %}
+        <div class="flex flex-col items-start xl:flex-row xl:justify-evenly xl:items-start">
 
-        <div class="flex flex-col text-xl justify-center relative top-56">
-            <p>Transaction complete</p>
+         <div class="xl:border-r border-backgroundSecondary xl:mx-2 mb-5">
+            <h1 class="font-bold text-textSecondary underline underline-offset-2">Order Items</h1>
+            {% for item in order_items %}
+            <div class="my-1">
+                <h1 class="font-medium text-xl">{{item.quantity}} {{item.product.name}} @{{item.product.price}}</h1>
+                <p>Total: ksh {{item.item_total}}</p>
+            </div>
+            {% endfor %}
+             
+            <p>Grand total: {{transaction.order.cart_total}}</p>
+         </div>   
+        <div class="flex flex-col xl:mx-2 xl:border-r border-backgroundSecondary">
+            <h1 class="font-bold text-textSecondary underline underline-offset-2">Transaction complete</h1>
             <p>Amount: {{transaction.amount}} </p>
-            <p>Receipt No. {{transaction.receipt_number}} </p>
+            <p>Receipt No.: {{transaction.receipt_number}} </p>
+            <p>Date: {{transaction.date}}</p>
         </div>
+        {% if transaction.order.shipping %}
+        <div class=" xl:mx-2">
+            <h1 class="font-bold text-textSecondary underline underline-offset-2">Shipping information</h1>
+            <div>
+                <p>Recipient: {{transaction.order.shipping_address.customer}}</p>
+                <p>Location: {{transaction.order.shipping_address.location}}</p>
+                <p>Estate: {{transaction.order.shipping_address.estate}}</p>
+                <p>House No: {{transaction.order.shipping_address.house_no}}</p>
+                <p>Delivery Fee: ksh 150</p>
+              </div>
+        </div>
+        {% endif %}
+    </div>
     {% else %}
     
-        <div class="flex text-xl justify-center relative top-56">
+        <div class="flex text-xl justify-center items-center relative top-56">
             <i class="uil uil-spinner animate-spin text-xl"></i>
             <p class="ml-5">Listening for your transaction</p>
         </div>
