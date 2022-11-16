@@ -36,6 +36,13 @@ function getCookie(name) {
     return cookieValue;
 }
 
+//This function deletes the cart cookies
+function deleteCartCookies() {
+    cart = {}
+    document.cookie = 'cart=' + JSON.stringify(cart) + ';domain=;path=/';
+    console.log('cart: ', cart)
+}
+
 //define and initialize cart from cookies. Create cart cookie if it does not exist
 let cart = JSON.parse(getCookie('cart'))
 

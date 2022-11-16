@@ -144,7 +144,7 @@ firebase_config = {
 firebase = pyrebase.initialize_app(firebase_config)
 storage = firebase.storage()
 
-auth = firebase.auth
+auth = firebase.auth()
 email = os.getenv('FIREBASE_EMAIL')
 password = os.getenv("FIREBASE_PASSWORD")
 
@@ -164,8 +164,11 @@ def upload_product_image(file):
     file.name = filename
     image = compress_image(file)
     directory = f'products/{filename}'
-    storage.child(directory).put(image)
-    return filename
+    user = auth.sign_in_with_email_and_password(email, password)
+    print('user: ', user)
+    storage.child(directory).put(image, user['idToken'])
+    image_url = get_image_url(filename, user)
+    return {'filename':filename, 'image_url': image_url}
 
 def get_image_url(filename, user):
     path = f'products/{filename}'

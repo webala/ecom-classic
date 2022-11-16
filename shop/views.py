@@ -75,14 +75,13 @@ class ProductCreate(CreateView):
         if product_create_form.is_valid():
             image = request.FILES.get('image')
             product = product_create_form.save(commit=False)
-            print(image)
-            # image = product.image
-            filename = upload_product_image(image)
+            
+            
+            image_data = upload_product_image(image)
+            filaname = image_data['filename']
+            image_url = image_data['image_url']
 
-            user = auth.sign_in_with_email_and_password(email, password)
-            print('email', email, password)
-            image_url = get_image_url(filename, user)
-
+            product.image_filename = filaname
             product.image_url = image_url
             product.save()
             return redirect('product_create')
