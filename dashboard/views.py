@@ -5,9 +5,11 @@ from django.views.generic.edit import UpdateView
 from django.views.generic import ListView, DetailView
 from dashboard.utils import category_count, count_customers, count_messages, count_sales, get_products_worth, products_count, send_email
 from shop.models import Order, Category, Customer, Message, Product, Reply, TransactionDetails
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
-
+@login_required
 def dashboard(request):
 
     # get latest product entry in database
@@ -31,6 +33,7 @@ def dashboard(request):
 
     return render(request, "dashboard.html", context)
 
+@login_required
 def dash_products(request):
     products = Product.objects.all()
     categories = Category.objects.all()
@@ -44,6 +47,7 @@ def dash_products(request):
 
     return render(request, 'dash/products.html', context)
 
+@login_required
 def delete_product(request, product_id):
     product = Product.objects.get(id=product_id)
     if product:
@@ -51,32 +55,32 @@ def delete_product(request, product_id):
     
     return redirect('dash-products')
 
-class OrdersList(ListView):
+class OrdersList(LoginRequiredMixin, ListView):
     model = Order
     template_name = 'dash/orders.html'
     fields = ['date_created', 'processed', 'shipping_address']
     context_object_name = 'orders'
     
-class UpdateProduct(UpdateView):
+class UpdateProduct(LoginRequiredMixin, UpdateView):
     model = Product
     fields = ['name', 'price', 'category', 'inventory', 'image']
     template_name: str = 'dash/product_update.html'
     success_url: str = '/dashboard/products'
 
-class CustomersView(ListView):
+class CustomersView(LoginRequiredMixin, ListView):
     model = Customer
     template_name = 'dash/customers.html'
     fields = ['first_name', 'last_name', 'phone', 'email']
     context_object_name: str = 'customers'
 
-class MessagesView(ListView):
+class MessagesView(LoginRequiredMixin, ListView):
     model = Message
     template_name: str = 'dash/messages.html'
     fields = ['name', 'email', 'message', 'date', 'read']
     context_object_name: str = 'customer_messages'
 
 
-class MessageDetailView(DetailView):
+class MessageDetailView(LoginRequiredMixin, DetailView):
     model = Message
     template_name = 'dash/message_detail.html'
     context_object_name: str = 'customer_message'
@@ -98,13 +102,13 @@ class MessageDetailView(DetailView):
         context['replies'] = replies 
         return context
 
-class TransactionsView(ListView):
+class TransactionsView(LoginRequiredMixin, ListView):
     model = TransactionDetails
     template_name: str = 'dash/transactions.html'
     context_object_name = 'transactions'
     fields = ['order', 'receipt_number', 'amount', 'phone_number', 'date', 'is_successful']
 
-
+@login_required
 def create_reply(request):
     if request.method == 'POST':
         print('post request received')
@@ -127,7 +131,7 @@ def create_reply(request):
         print('method not allowed')
         return HttpResponseNotAllowed('Method not allowed')
 
-
+@login_required
 def mass_message(request):
     customers = Customer.objects.all()
     data = request.POST

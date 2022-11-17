@@ -20,7 +20,7 @@
         </form>
 
         <div class="mb-44">
-            {% if not products and not category_products %}
+            {% if not products and not category_products and search_value %}
                 <div class="px-10 sm:px-20 md:px-40 my-20">
                     <p>Oops! We cound not find what you are looking for.</p>
                 </div>
@@ -45,11 +45,6 @@
             {% endif %}
         </div>
     </div>
-
-
-
-
-
 </div>
 
 {% endblock %}

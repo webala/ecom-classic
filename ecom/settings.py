@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["abac-41-80-96-106.eu.ngrok.io", "localhost"]
 
+LOGIN_URL='accounts/login'
+LOGIN_REDIRECT_URL = '/dashboard'
+
 DEFAULT_PORT = "8080"
 INTERNAL_IPS = [
     "127.0.0.1",

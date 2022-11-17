@@ -7,10 +7,11 @@ from django.contrib.auth.tokens import default_token_generator
 from django.template.loader import render_to_string
 from django.core.mail import send_mail, BadHeaderError
 from .forms import CreateUser
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required
 def register_user(request):
     form = CreateUser(request.POST or None)
     if form.is_valid():
