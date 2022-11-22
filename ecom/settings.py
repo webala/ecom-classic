@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-tb9)ii5)-6rtg_y5))!qq5#tx@ey3x-1#48ds!#xqq^7$mtj=y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["abac-41-80-96-106.eu.ngrok.io", "localhost"]
+ALLOWED_HOSTS = ["*"]
 
 LOGIN_URL='accounts/login'
 LOGIN_REDIRECT_URL = '/dashboard'
@@ -146,6 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Where static files (css, js, images) are stored
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]

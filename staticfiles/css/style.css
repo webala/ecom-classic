@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.logo h1 {
+    font-family: 'Pacifico', cursive;
+}
+.logo {
+    transform: translateX(-500px);
+    transition: 0.9s ease-in-out;
+}
+.logo.loaded {
+    transform: translateX(0);
+}
+.quote {
+    font-family: 'Satisfy', cursive;
+    font-size: 25px; 
+    transform: translateX(1000px);
+    transition: 0.9s ease-in-out;
+    z-index: 100;
+    color: black;
+}
+
+.quote.loaded {
+    transform: translateX(0);
+     color: white;
+}
+
+.quote p:last-child {
+    font-size: 15px;
+}
+
+.field input, .field select {
+    border: 2px solid #810955;
+    border-radius: 8px;
+    width: 250px;
+    color: black;
+}
+
+.field textarea {
+    border-radius: 10px;
+    width: 300px;
+}
+
+
+.product-form .field:last-child input {
+ width: auto;
+}
+
+.errorlist {
+    color: red;
+}
+
+/* .products {
+    position: relative;
+    transform: translateY(200px);
+    transition: 0.9s ease-in-out;
+    
+} */
+
+/* .products.loaded {
+    transform: translateY(0);  
+} */
+
+.dropdown-items {
+    visibility: hidden;
+    position: relative;
+    /* left: 10px; */
+}
+
+.dropdown:hover .dropdown-items {
+    visibility: visible;
+}
+
+
+
+/* .slide-show {
+    /* transform: translateY(-700px); */
+    /* transition: 0.7s ease-in-out; */
+/* } */ 
+/* .slide-show.loaded { */
+    /* transform: translateY(0); */
+/* } */
+/* .cart-items {
+    transform: translateY(500px);
+    transition: 0.9s ease-in-out;
+} */
+
+/* .cart-items.loaded {
+    transform: translateY(0);
+} */
+
+.nav-items.toggle {
+    top: 100%;
+    height: 100vh;
+}
+
+@media screen and (min-width: 640px) {
+    
+
+
+    .quote {
+        font-size:30px;
+    }
+    .quote p:last-child {
+        font-size: 20px;
+    }
+    /* .products {
+        /* bottom: 250px; */
+    /* } */ 
+}
+
+
+@media screen and (min-width: 1300px) {
+    /* .slide-show {
+        transform: translateY(-400px);
+    } */
+    /* .products {
+       bottom: 400px;
+        
+    } */
+    .logo h1 {
+        font-size: 50px;
+    }
+}
